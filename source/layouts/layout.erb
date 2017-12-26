@@ -51,7 +51,7 @@ under the License.
       </span>
     </a>
     <div class="toc-wrapper">
-      <%= image_tag "logo.png", class: 'logo' %>
+      <%= image_tag "logo.svg", class: 'logo' %>
       <% if language_tabs.any? %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
@@ -94,12 +94,18 @@ under the License.
       <% end %>
     </div>
     <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <%= page_content %>
-      </div>
-      <div class="dark-box">
-        <% if language_tabs.any? %>
+      <% if language_tabs.any? %>
+        <div class="dark-box"></div>
+        <div class="content">
+          <%= page_content %>
+        </div>
+      <% else %>
+        <div class="full_content">
+          <%= page_content %>
+        </div>
+      <% end %>
+      <% if language_tabs.any? %>
+        <div class="dark-box">
           <div class="lang-selector">
             <% language_tabs.each do |lang| %>
               <% if lang.is_a? Hash %>
@@ -109,8 +115,8 @@ under the License.
               <% end %>
             <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </body>
 </html>
