@@ -1,4 +1,3 @@
-
 # Start Game
 
 ## Start Solo Game
@@ -130,11 +129,21 @@ Returns a list of messages that were exchanged in the room after the specified `
 
 # Invoke Server Function
 ```javascript
-kapow.invokeRPC('functionName', parameters, function(response) {
-  console.log("Result of invoking server side function: ", response);
-}, function(error) {
-  console.error("Error while invoking server side function: ", error);
-});
+kapow.rpc.invoke({
+    functionName: 'functionName',
+    parameters: { 'key': 'value' },
+    invokeLazily: true
+  },
+  function(response) {
+    if (response.status == "executed") {
+      console.log("Result of invoking server side function: ", response.result);
+    } else { // response.status == "scheduled"
+      console.log("Function scheduled for invocation.");
+    }
+  },
+  function(response) {
+    console.error("Error while invoking server side function: ", response.error);
+  });
 ```
 > Sample server side function:
 
@@ -155,15 +164,21 @@ game.makeMove = function(move) {
 > Sample client side code:
 
 ```javascript
-kapow.invokeRPC('makeMove', move, function(wasSuccessful) {
-  if (wasSuccessful) {
-    console.log("Valid move");
-  } else {
-    console.error("Invalid move");
-  }
-}, function(e) {
-  console.error("Error: ", e);
-});
+kapow.rpc.invoke({
+    functionName: 'makeMove',
+    parameters: move,
+    invokeLazily: false
+  },
+  function(response) {
+    if (response.result) {
+      console.log("Valid move");
+    } else {
+      console.error("Invalid move");
+    }
+  },
+  function(response) {
+    console.error("Error: ", response.error);
+  });
 ```
 
 Invokes the specified method within your server JavaScript file and passes the value you return from your function in the success callback.
@@ -172,6 +187,13 @@ Parameter | Description
 --------- | -----------
 functionName | The name of the function on the server that you want to invoke.
 parameters | JSON object you want to pass to the function as parameter during invocation.
+invokeLazily | Set to `true` if you don't want to block on this network call and instead want the method to be invoked as and when the user has network connectivity. Default value is `false`.
+
+Response Attribute | Description
+------------------ | -----------
+status | Indicates whether the request was `executed` or just `scheduled` (in case of lazily-invokable RPCs).
+result | The response returned from the server.
+error | Error message returned from the server.
 
 <aside class="notice">
 The method on the server side that is to be invoked must be part of a globally accessible `game` object.
@@ -335,7 +357,37 @@ Parameter | Description
 metric | The configured metric whose stats are to be displayed.
 interval | The time interval for which the stats are to be displayed. Possible values are: `daily`/`weekly`/`monthly`/`alltime`.
 
-# WebView Management
+# Room Management
+
+## Display Active Rooms
+```javascript
+kapow.displayActiveRooms();
+```
+Displays a pop up that shows the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
+
+## Get Active Rooms
+```javascript
+kapow.getActiveRooms(function(rooms) {
+  for (var roomIndex in rooms) {
+    console.log("Room #" + roomIndex + 1 + ": ", rooms[roomIndex]);
+  }
+}, function(error) {
+  console.error(error);
+})
+```
+Returns the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
+
+## Load Room
+```javascript
+kapow.loadRoom(roomId, function(room) {
+  console.log("Loaded room: ", room);
+  startGamePlay(room);
+}, function(error) {
+  console.error(error);
+});
+```
+Loads the context of a `Room` indicated by the `roomId` to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
+For example: Call this when you want to take the user to the last room he was a part of (as fetched from `getActiveRooms`) on game load.
 
 ## Unload Room
 ```javascript
@@ -348,6 +400,8 @@ kapow.unloadRoom(function() {
 ```
 Unloads the context of a `Room` from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
 For example: Call this when the user clicks on `Start a new game` while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.
+
+# WebView Management
 
 ## Close WebView
 ```javascript
