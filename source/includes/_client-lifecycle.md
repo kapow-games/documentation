@@ -34,9 +34,9 @@ game.onResume = function() {
 ```
 Called when the game gains focus.
 
-## onDataReceived
+## onData
 ```javascript
-game.onDataReceived = function(packet) {
+game.onData = function(packet) {
   var move = packet.data;
   updateGameState(move);
 }
@@ -57,9 +57,9 @@ game.onTurnChange = function(player) {
 ```
 Called as a result of a `setNextPlayer` API call. Indicates who the next player to make the move is. You can compare this with the user's own player-id to check if it's his turn currently.
 
-## onPlayerJoined
+## onPlayerJoin
 ```javascript
-game.onPlayerJoined = function(player) {
+game.onPlayerJoin = function(player) {
   kapow.getRoomInfo(function(room) {
     var countOfAcceptedPlayers = 0;
     room.players.forEach(function(player) {
@@ -76,9 +76,9 @@ game.onPlayerJoined = function(player) {
 ```
 Called when a new/invited player joins/accepts an invitation to the room.
 
-## onBackButtonPressed
+## onBackButtonPress
 ```javascript
-game.onBackButtonPressed = function() {
+game.onBackButtonPress = function() {
 	if (isUserOnGamePlayScreen()) {
 		showConfirmationDialog();
 		return true;
