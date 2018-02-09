@@ -14,5 +14,4 @@ includes:
   - client-api
   - client-lifecycle
 
-search: true
 ---

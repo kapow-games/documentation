@@ -14,5 +14,4 @@ includes:
   - server-api
   - server-lifecycle
 
-search: true
 ---

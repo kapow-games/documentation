@@ -1,7 +1,6 @@
 ---
 title: Kapow Documentation
 
-search: true
 ---
 
 # API Guide

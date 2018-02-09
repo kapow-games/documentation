@@ -7,7 +7,6 @@ toc_footers:
   - <a href='./client-api-reference.html'>Client API Reference</a>
   - <a href='./server-api-reference.html'>Server API Reference</a>
 
-search: true
 ---
 
 # Introduction
