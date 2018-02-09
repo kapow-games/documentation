@@ -1,149 +1,221 @@
-# Start Game
+# Game Management
+## Start Game
+> Create a solo room (offline):
 
-## Start Solo Game
 ```javascript
-kapow.startSoloGame(function(room) {
-  console.log("Solo room created", room);
-  // Start game play here
-}, function(error) {
-  console.error("Something went wrong", error);
+kapow.game.start({
+  type: 'solo',
+  onSuccess: function(room) {
+    console.log("Solo room created", room);
+    // Start game play here
+  },
+  onFailure: function(error) {
+    console.error("Something went wrong", error);
+  }
 });
 ```
-Returns a `Room` generated offline. You can store this identifier in your game-store for future use-cases.
+> Create a room with a specified set of friends:
 
-## Start Game With Friends
 ```javascript
-kapow.startGame(playerIdList, function(room) {
-  console.log("Room with friends created", room);
-  // Start game play here
-}, function(error) {
-  console.error(error);
+kapow.game.start({
+  type: 'friends',
+  players: ['alice@kapow.games', 'bob@kapow.games'],
+  onSuccess: function(room) {
+    console.log("Solo room created", room);
+    // Start game play here
+  },
+  onFailure: function(error) {
+    console.error("Something went wrong", error);
+  }
 });
 ```
-Creates a `Room` with the mentioned players, and sends out an invitation to all of them.
+> Pop up dialog to pick friends to play with:
+
+```javascript
+kapow.game.start({
+  type: 'friends',
+  onSuccess: function(room) {
+    console.log("Solo room created", room);
+    // Start game play here
+  },
+  onFailure: function(error) {
+    console.error("Something went wrong", error);
+  }
+});
+```
+> Create a room with random players:
+
+```javascript
+kapow.game.start({
+  type: 'random',
+  attributes: {
+    "difficulty": "medium"
+  },
+  onSuccess: function(room) {
+    console.log("Solo room created", room);
+    // Start game play here
+  },
+  onFailure: function(error) {
+    console.error("Something went wrong", error);
+  }
+});
+```
+Starts a game by creating a room according to the specified parameters.
 
 Parameter | Description
 --------- | -----------
-playerIdList | An array of player-ids with whom you want to create a room. Eg. `[player_1@kapow.games, player_2@kapow.games]`
+type | Type of room to be created. Possible values: `solo`/`friends`/`random`
+players | Array of player-ids with whom you want to create a room. Eg. `[alice@kapow.games, bob@kapow.games]`. If this value isn't mentioned, and the `type` is `friends`, Kapow will pop up the friend-selection dialog.
+attributes | JSON object that'll be used to match players with each other in case of a `random` game.
 
-## Choose Friends To Start A Game With
+## Add Player
 ```javascript
-kapow.startGameWithFriends(minimumNumberOfPlayers, maximumNumberOfPlayers, function(room) {
-  console.log("Room with chosen friends created", room);
-  // Start game play here
-}, function(error) {
-  console.error(error);
+kapow.game.addPlayer({
+  onSuccess: function(room) {
+    console.log("Room with invited player", room);
+    // Resume game play here
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
 });
 ```
-Pops up an overlay asking the user to select a specific number of his friends to start a game with, creates and returns a new room with the selected players.
-
-Parameter | Description
---------- | -----------
-minimumNumberOfPlayers | Minimum number of players the user must select to create the room.
-maximumNumberOfPlayers | Maximum number of players the user is allowed to select.
-
-## Start Game With Random Players
-```javascript
-kapow.startGameWithRandomPlayers(attributes, function(room) {
-  console.log("Room with random players created", room);
-  // Start game play here
-}, function(error) {
-  console.error(error);
-});
-```
-Creates a room with `attributes`. When another player tries to start a game against random players with the same set of `attributes`, Kapow will add that player to this room.
-
-Parameter | Description
---------- | -----------
-attributes | A JSON object that'll be used to match players. Eg: `{'difficultyLevel': 'medium'}`.
-
-## Invite player
-```javascript
-kapow.invitePlayers(minimumNumberOfPlayers, maximumNumberOfPlayers, function(room) {
-  console.log("Room with invited players", room);
-  // Resume game play here
-}, function(error) {
-  console.error(error);
-});
-```
-Displays the native overlay to select and add players to the active room. Will return the updated `Room` in the success callback.
-
-Parameter | Description
---------- | -----------
-minimumNumberOfPlayers | Minimum number of players the user must select to create the room.
-maximumNumberOfPlayers | Maximum number of players the user is allowed to select.
+Displays the native overlay to select and add a player to the active room. Will return the updated `Room` in the success callback.
 
 ## Rematch
 ```javascript
-kapow.rematch(function(room) {
-  console.log("Rematch room created", room);
-  // Start game play here
-}, function(error) {
-  console.error(error);
+kapow.game.rematch({
+  onSuccess: function(room) {
+    console.log("Rematch room created", room);
+    // Start game play here
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
 });
 ```
 Creates a new `Room` with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single `Room` is created for all of them.
 
-# End Game
+## End Game
 <aside class="notice">
 Only solo games can be ended from the client. To end a multiplayer game, the `endGame` API needs to be triggered from the server.
 </aside>
-## End Solo Game
 ```javascript
-kapow.endSoloGame(function() {
-  console.log("Solo game ended");
-  // Show the game-ended screen
-}, function(error) {
-  console.error(error);
+kapow.game.end({
+  onSuccess: function() {
+    console.log("Solo game ended");
+    // Show the game-ended screen
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
 });
 ```
 Tells Kapow that the solo game is over, and the app will stop listing the game in its list of currently active rooms.
 
-# History
-To fetch the moves that have been exchanged within a `Room` since the last time the game was open, either of the following two APIs can be used. Each returns a list of messages that have been exchanged in the group since the `message` denoted by `messageId` in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.
+# Room Management
+
+## Display Active Rooms
+```javascript
+kapow.displayActiveRooms({
+  onDismiss: function() {
+    console.log("Dialog dismissed")
+  }
+});
+```
+Displays a pop up that shows the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
+
+## Get Active Rooms
+```javascript
+kapow.getActiveRooms({
+  onSuccess: function(rooms) {
+    for (var roomIndex in rooms) {
+      console.log("Room #" + roomIndex + 1 + ": ", rooms[roomIndex]);
+    }
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
+})
+```
+Returns the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
+
+## Load Room
+```javascript
+kapow.loadRoom({
+  roomId: 'room@kapow.games',
+  onSuccess: function(room) {
+    console.log("Loaded room: ", room);
+    startGamePlay(room);
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
+});
+```
+Loads the context of a `Room` indicated by the `roomId` to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
+For example: Call this when you want to take the user to the last room he was a part of (as fetched from `getActiveRooms`) on game load.
 
 Parameter | Description
 --------- | -----------
-messageId | The id of the message before/after which you want to fetch messages. Pass `null` to get the history from the beginning.
-numberOfMessages | Number of messages you want to retrieve (maximum of 25).
+roomId | Identifier of the room to be loaded into context.
 
-## Fetch messages before
+## Unload Room
 ```javascript
-kapow.fetchHistoryBefore(messageId, numberOfMessages, function(messages) {
-  console.log("Messages fetched from history", messages);
-}, function(error) {
-  console.error(error);
+kapow.unloadRoom({
+  onSuccess: function() {
+    console.log("Unloaded room successfully");
+    // Take the user to the game's home screen
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
 });
 ```
-Returns a list of messages that were exchanged in the room before the specified `messageId`.
+Unloads the context of a `Room` from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
+For example: Call this when the user clicks on `Start a new game` while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.
 
-## Fetch messages after
+# History
 ```javascript
-kapow.fetchHistoryAfter(messageId, numberOfMessages, function(messages) {
-  console.log("Messages fetched from history", messages);
-}, function(error) {
-  console.error(error);
+kapow.history.fetch({
+  messageId: '1517568717299-n8e-m202',
+  type: 'before'
+  numberOfMessages: 20,
+  onSuccess: function(messages) {
+    console.log("Messages fetched from history", messages);
+  },
+  onFailure: function(error) {
+    console.error(error);
+  }
 });
 ```
-Returns a list of messages that were exchanged in the room after the specified `messageId`.
+Used to fetch the moves that have been exchanged within a `Room` since the last time the game was open. The API returns a list of messages that have been exchanged in the group since the `message` denoted by `messageId` in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.
+
+Parameter | Description
+--------- | -----------
+messageId | The id of the message before/after which you want to fetch messages. Skip this attribute to get the history from the beginning.
+type | Possible values: `before`/`after`.
+numberOfMessages | Number of messages you want to retrieve (maximum of 25). Default value is `25`.
 
 # Invoke Server Function
 ```javascript
 kapow.rpc.invoke({
-    functionName: 'functionName',
-    parameters: { 'key': 'value' },
-    invokeLazily: true
+  functionName: 'functionName',
+  parameters: {
+    'key': 'value'
   },
-  function(response) {
+  invokeLazily: true,
+  onSuccess: function(response) {
     if (response.status == "executed") {
       console.log("Result of invoking server side function: ", response.result);
     } else { // response.status == "scheduled"
       console.log("Function scheduled for invocation.");
     }
   },
-  function(response) {
+  onFailure: function(response) {
     console.error("Error while invoking server side function: ", response.error);
-  });
+  }
+});
 ```
 > Sample server side function:
 
@@ -165,20 +237,20 @@ game.makeMove = function(move) {
 
 ```javascript
 kapow.rpc.invoke({
-    functionName: 'makeMove',
-    parameters: move,
-    invokeLazily: false
-  },
-  function(response) {
+  functionName: 'makeMove',
+  parameters: move,
+  invokeLazily: false,
+  onSuccess: function(response) {
     if (response.result) {
       console.log("Valid move");
     } else {
       console.error("Invalid move");
     }
   },
-  function(response) {
+  onFailure: function(response) {
     console.error("Error: ", response.error);
-  });
+  }
+});
 ```
 
 Invokes the specified method within your server JavaScript file and passes the value you return from your function in the success callback.
@@ -191,7 +263,7 @@ invokeLazily | Set to `true` if you don't want to block on this network call and
 
 Response Attribute | Description
 ------------------ | -----------
-status | Indicates whether the request was `executed` or just `scheduled` (in case of lazily-invokable RPCs).
+status | Indicates whether the request was `executed` or just `scheduled` (in case of lazily-invoked RPCs).
 result | The response returned from the server.
 error | Error message returned from the server.
 
@@ -201,14 +273,19 @@ The method on the server side that is to be invoked must be part of a globally a
 
 # Analytics
 ```javascript
-kapow.analytics.sendEvent('eventName', attributes);
+kapow.analytics.sendEvent({
+  eventName: 'new_game_tapped',
+  attributes: {
+    source: 'homescreen'
+  }
+});
 ```
 Sends out an analytics event to Kapow servers. In future, there'll be a section in the Developer Dashboard where these events can be queried and visualized.
 
 Parameter | Description
 --------- | -----------
 eventName | The name of the event to be sent.
-attributes | A JSON map of extra attributes `{'key':'value'}` that need to be sent along with the event.
+attributes | A JSON map of extra attributes `{'key':'value'}` that is to be sent along with the event.
 
 # Stores
 Use these stores instead of `localStorage` for consistent storage behavior across devices and operating systems.
@@ -219,33 +296,51 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 
 ## Game Store
 ```javascript
-kapow.gameStore.set('key', value, function() {
-  console.log("Successfully stored value");
-}, function(error) {
-  console.error("Error while storing value", error);
+kapow.gameStore.set({
+  key: 'key',
+  value: value,
+  onSuccess: function() {
+    console.log("Successfully stored value");
+  },
+  onFailure: function(error) {
+    console.error("Error while storing value", error);
+  }
 });
 
-kapow.gameStore.get('key', function(value) {
-	console.log("Successfully retrieved value", value);
-}, function(error) {
-	console.error("Error while retrieving value", error);
-})
+kapow.gameStore.get({
+  key: 'key',
+  onSuccess: function(value) {
+    console.log("Successfully retrieved value", value);
+  },
+  onFailure: function(error) {
+    console.error("Error while retrieving value", error);
+  }
+});
 ```
 `gameStore` is used to store and retrieve data that is shared across multiple rooms. For example, user preferences such as in-game-sound settings (muted or not).
 
 ## Room Store
 ```javascript
-kapow.roomStore.set('key', value, function() {
-  console.log("Successfully stored value");
-}, function(error) {
-  console.error("Error while storing value", error);
+kapow.roomStore.set({
+  key: 'key',
+  value: value,
+  onSuccess: function() {
+    console.log("Successfully stored value");
+  },
+  onFailure: function(error) {
+    console.error("Error while storing value", error);
+  }
 });
 
-kapow.roomStore.get('key', function(value) {
-	console.log("Successfully retrieved value", value);
-}, function(error) {
-	console.error("Error while retrieving value", error);
-})
+kapow.roomStore.get({
+  key: 'key',
+  onSuccess: function(value) {
+    console.log("Successfully retrieved value", value);
+  },
+  onFailure: function(error) {
+    console.error("Error while retrieving value", error);
+  }
+});
 ```
 `roomStore` is used to store and retrieve data that is specific to a particular room.
 
@@ -253,8 +348,10 @@ kapow.roomStore.get('key', function(value) {
 
 ## Get User Information
 ```javascript
-kapow.getUserInfo(function(user) {
-  console.log("User information", user);
+kapow.getUserInfo({
+  onSuccess: function(user) {
+    console.log("User information", user);
+  }
 });
 ```
 > Sample User Object:
@@ -269,13 +366,18 @@ kapow.getUserInfo(function(user) {
 	}
 }
 ```
-
 Returns information regarding the user whose device the game is running on.
 
 ## Get Player Information
 ```javascript
-kapow.getPlayerInfo(playerId, function(player) {
-  console.log("Player information", player);
+kapow.getPlayerInfo({
+  playerId: 'alice@kapow.games',
+  onSuccess: function(player) {
+    console.log("Player information", player);
+  },
+  onFailure: function(error) {
+    console.error("Error fetching player information", error);
+  }
 });
 ```
 > Sample Player Object:
@@ -293,12 +395,17 @@ Returns information regarding the player, denoted by `playerId`.
 
 Parameter | Description
 --------- | -----------
-playerId | The id of the player whose information you want to retreive.
+playerId | The id of the player whose information you want to retrieve.
 
 ## Get Room Information
 ```javascript
-kapow.getRoomInfo(function(room) {
-  console.log("Room information", room);
+kapow.getRoomInfo({
+  onSuccess: function(room) {
+    console.log("Room information", room);
+  },
+  onFailure: function(error) {
+    console.error("Error while fetching room information", error);
+  }
 });
 ```
 > Sample Room Object:
@@ -324,14 +431,19 @@ kapow.getRoomInfo(function(room) {
 ```
 
 Returns information regarding the room that's loaded in the WebView.
-If a `room` has not been created yet, you'll receive a `null` response.
+If a `room` has not been created/loaded yet, you'll receive an error response.
 
 # Social Sharing
 ```javascript
-kapow.social.share(text, medium, function() {
-	console.log("Successfully shared", text);
-}, function(error) {
-	console.error("Error while sharing", error);
+kapow.social.share({
+  text: "Hello, world!",
+  medium: "facebook",
+  onSuccess: function() {
+    console.log("Successfully shared");
+  },
+  onFailure: function(error) {
+    console.error("Error while sharing", error);
+  }
 });
 ```
 
@@ -340,13 +452,16 @@ Shares the `text` on the specified `medium`.
 Parameter | Description
 --------- | -----------
 text | The text to be shared.
-medium | The medium on which you want to share the post. Either of `facebook`/`twitter`. Pass `null` if you want Kapow to pop up the generic share dialog.
+medium | The medium on which you want to share the post. Either of `facebook`/`twitter`. Skip this attribute if you want Kapow to pop up the generic share dialog.
 
 # Scoreboard Display
 ```javascript
 kapow.boards.displayScoreboard({
-  'metric': 'coins',
-  'interval': 'alltime'
+  metric: 'coins',
+  interval: 'alltime',
+  onDismiss: function() {
+    console.log("Scoreboard dismissed");
+  }
 });
 ```
 
@@ -356,50 +471,6 @@ Parameter | Description
 --------- | -----------
 metric | The configured metric whose stats are to be displayed.
 interval | The time interval for which the stats are to be displayed. Possible values are: `daily`/`weekly`/`monthly`/`alltime`.
-
-# Room Management
-
-## Display Active Rooms
-```javascript
-kapow.displayActiveRooms();
-```
-Displays a pop up that shows the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
-
-## Get Active Rooms
-```javascript
-kapow.getActiveRooms(function(rooms) {
-  for (var roomIndex in rooms) {
-    console.log("Room #" + roomIndex + 1 + ": ", rooms[roomIndex]);
-  }
-}, function(error) {
-  console.error(error);
-})
-```
-Returns the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
-
-## Load Room
-```javascript
-kapow.loadRoom(roomId, function(room) {
-  console.log("Loaded room: ", room);
-  startGamePlay(room);
-}, function(error) {
-  console.error(error);
-});
-```
-Loads the context of a `Room` indicated by the `roomId` to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
-For example: Call this when you want to take the user to the last room he was a part of (as fetched from `getActiveRooms`) on game load.
-
-## Unload Room
-```javascript
-kapow.unloadRoom(function() {
-  console.log("Unloaded room successfully");
-  // Take the user to the game's home screen
-}, function(error) {
-  console.error(error);
-});
-```
-Unloads the context of a `Room` from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
-For example: Call this when the user clicks on `Start a new game` while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.
 
 # WebView Management
 

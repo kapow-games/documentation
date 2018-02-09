@@ -69,6 +69,14 @@ under the License.
         </div>
         <ul class="search-results"></ul>
       <% end %>
+      
+      <% if current_page.data.toc_footers %>
+        <ul class="toc-footer">
+          <% current_page.data.toc_footers.each do |footer| %>
+            <li><%= footer %></li>
+          <% end %>
+        </ul>
+      <% end %>
       <div id="toc" class="toc-list-h1">
         <% toc_data(page_content).each do |h1| %>
           <li>
@@ -85,13 +93,6 @@ under the License.
           </li>
         <% end %>
       </div>
-      <% if current_page.data.toc_footers %>
-        <ul class="toc-footer">
-          <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
     </div>
     <div class="page-wrapper">
       <% if language_tabs.any? %>

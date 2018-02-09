@@ -12,6 +12,6 @@ toc_footers:
 
 includes:
   - client-api
-  - client-lifecycle
+  - client-events
 
 ---
