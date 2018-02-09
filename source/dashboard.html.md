@@ -29,12 +29,23 @@ URL to the location where the game is hosted. Eg: `https://example.com/game/inde
 URL to the location of your server side JavaScript file. Eg: `https://example.com/game/server/server.js`.
 
 ### Number of Players
-When a player chooses to play against random opponents, Kapow will lock the room if [auto-room-locking](https://github.com/kapow-games/docs/wiki/Developer-Dashboard#auto-room-locking) is enabled once these many players have joined the room. The game does have the option to [unlock](https://github.com/kapow-games/docs/wiki/Server-API-Reference#unlockroomroomid-successcb-failurecb) the room post this.
+When a player chooses to play against random opponents, Kapow will lock the room if auto-room-locking is enabled once these many players have joined the room. The game does have the option to unlock the room post this.
 
 ### Auto Room Locking
-This is to tell Kapow whether it should auto lock the room when the specified [number of players](https://github.com/kapow-games/docs/wiki/Developer-Dashboard#number-of-players) have joined a room filled with random players.
+This is to tell Kapow whether it should auto lock the room when the specified number of players have joined a room filled with random players.
 
 ## Distribution
 For as long as your game is in the beta phase, it will not be surfaced to the general public. To let your team members view and test the game, you will have to list down their Facebook email addresses in the `Distribution` section.
 
-*Please note that only email addresses of users who have registered on the Kapow app can be used entered here.*
+<aside class="notice">
+Please note that only email addresses of users who have registered on the Kapow app can be used entered here.
+</aside>
+
+## Boards
+If your game contains scoreboards, you can configure them here. For more information, check out the FAQ page.
+
+## Server Logs
+Logs emitted by your server script will be displayed here.
+
+## Client Logs
+Logs emitted by your client script will be displayed here.
