@@ -335,16 +335,16 @@
                     <a href="#onresume" class="toc-h2 toc-link" data-title="onResume">onResume</a>
                   </li>
                   <li>
-                    <a href="#ondata" class="toc-h2 toc-link" data-title="onData">onData</a>
+                    <a href="#onmessagereceived" class="toc-h2 toc-link" data-title="onMessageReceived">onMessageReceived</a>
                   </li>
                   <li>
                     <a href="#onturnchange" class="toc-h2 toc-link" data-title="onTurnChange">onTurnChange</a>
                   </li>
                   <li>
-                    <a href="#onplayerjoin" class="toc-h2 toc-link" data-title="onPlayerJoin">onPlayerJoin</a>
+                    <a href="#onplayerjoined" class="toc-h2 toc-link" data-title="onPlayerJoined">onPlayerJoined</a>
                   </li>
                   <li>
-                    <a href="#onbackbuttonpress" class="toc-h2 toc-link" data-title="onBackButtonPress">onBackButtonPress</a>
+                    <a href="#onbackbuttonpressed" class="toc-h2 toc-link" data-title="onBackButtonPressed">onBackButtonPressed</a>
                   </li>
                   <li>
                     <a href="#ongameend" class="toc-h2 toc-link" data-title="onGameEnd">onGameEnd</a>
@@ -835,7 +835,7 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">}</span>
 </code></pre>
 <p>Called when the game gains focus.</p>
-<h2 id='ondata'>onData</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='onmessagereceived'>onMessageReceived</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onMessageReceived</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">move</span> <span class="o">=</span> <span class="nx">packet</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
   <span class="nx">updateGameState</span><span class="p">(</span><span class="nx">move</span><span class="p">);</span>
 <span class="p">}</span>
@@ -852,7 +852,7 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">}</span>
 </code></pre>
 <p>Called as a result of a <code>setNextPlayer</code> API call. Indicates who the next player to make the move is. You can compare this with the user&#39;s own player-id to check if it&#39;s his turn currently.</p>
-<h2 id='onplayerjoin'>onPlayerJoin</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerJoin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='onplayerjoined'>onPlayerJoined</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerJoin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">countOfAcceptedPlayers</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">room</span><span class="p">.</span><span class="nx">players</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
@@ -868,7 +868,7 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">}</span>
 </code></pre>
 <p>Called when a new/invited player joins/accepts an invitation to the room.</p>
-<h2 id='onbackbuttonpress'>onBackButtonPress</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onBackButtonPress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<h2 id='onbackbuttonpressed'>onBackButtonPressed</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onBackButtonPress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">isUserOnGamePlayScreen</span><span class="p">())</span> <span class="p">{</span>
         <span class="nx">showConfirmationDialog</span><span class="p">();</span>
         <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
