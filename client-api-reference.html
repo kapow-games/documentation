@@ -198,7 +198,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
   <body class="client-api-reference" data-languages="[&quot;javascript&quot;]">
@@ -213,52 +213,50 @@
         <div class="lang-selector">
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
+      
+        <ul class="toc-footer">
+            <li><a href='./index.html'>Introduction</a></li>
+            <li><a href='./dashboard.html'>Developer Dashboard</a></li>
+            <li><a href='./client-api-reference.html'>Client API Reference</a></li>
+            <li><a href='./server-api-reference.html'>Server API Reference</a></li>
+        </ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#start-game" class="toc-h1 toc-link" data-title="Start Game">Start Game</a>
+            <a href="#game-management" class="toc-h1 toc-link" data-title="Game Management">Game Management</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#start-solo-game" class="toc-h2 toc-link" data-title="Start Solo Game">Start Solo Game</a>
+                    <a href="#start-game" class="toc-h2 toc-link" data-title="Start Game">Start Game</a>
                   </li>
                   <li>
-                    <a href="#start-game-with-friends" class="toc-h2 toc-link" data-title="Start Game With Friends">Start Game With Friends</a>
-                  </li>
-                  <li>
-                    <a href="#choose-friends-to-start-a-game-with" class="toc-h2 toc-link" data-title="Choose Friends To Start A Game With">Choose Friends To Start A Game With</a>
-                  </li>
-                  <li>
-                    <a href="#start-game-with-random-players" class="toc-h2 toc-link" data-title="Start Game With Random Players">Start Game With Random Players</a>
-                  </li>
-                  <li>
-                    <a href="#invite-player" class="toc-h2 toc-link" data-title="Invite player">Invite player</a>
+                    <a href="#add-player" class="toc-h2 toc-link" data-title="Add Player">Add Player</a>
                   </li>
                   <li>
                     <a href="#rematch" class="toc-h2 toc-link" data-title="Rematch">Rematch</a>
                   </li>
+                  <li>
+                    <a href="#end-game" class="toc-h2 toc-link" data-title="End Game">End Game</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#end-game" class="toc-h1 toc-link" data-title="End Game">End Game</a>
+            <a href="#room-management" class="toc-h1 toc-link" data-title="Room Management">Room Management</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#end-solo-game" class="toc-h2 toc-link" data-title="End Solo Game">End Solo Game</a>
+                    <a href="#display-active-rooms" class="toc-h2 toc-link" data-title="Display Active Rooms">Display Active Rooms</a>
+                  </li>
+                  <li>
+                    <a href="#get-active-rooms" class="toc-h2 toc-link" data-title="Get Active Rooms">Get Active Rooms</a>
+                  </li>
+                  <li>
+                    <a href="#load-room" class="toc-h2 toc-link" data-title="Load Room">Load Room</a>
+                  </li>
+                  <li>
+                    <a href="#unload-room" class="toc-h2 toc-link" data-title="Unload Room">Unload Room</a>
                   </li>
               </ul>
           </li>
           <li>
             <a href="#history" class="toc-h1 toc-link" data-title="History">History</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#fetch-messages-before" class="toc-h2 toc-link" data-title="Fetch messages before">Fetch messages before</a>
-                  </li>
-                  <li>
-                    <a href="#fetch-messages-after" class="toc-h2 toc-link" data-title="Fetch messages after">Fetch messages after</a>
-                  </li>
-              </ul>
           </li>
           <li>
             <a href="#invoke-server-function" class="toc-h1 toc-link" data-title="Invoke Server Function">Invoke Server Function</a>
@@ -298,23 +296,6 @@
             <a href="#scoreboard-display" class="toc-h1 toc-link" data-title="Scoreboard Display">Scoreboard Display</a>
           </li>
           <li>
-            <a href="#room-management" class="toc-h1 toc-link" data-title="Room Management">Room Management</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#display-active-rooms" class="toc-h2 toc-link" data-title="Display Active Rooms">Display Active Rooms</a>
-                  </li>
-                  <li>
-                    <a href="#get-active-rooms" class="toc-h2 toc-link" data-title="Get Active Rooms">Get Active Rooms</a>
-                  </li>
-                  <li>
-                    <a href="#load-room" class="toc-h2 toc-link" data-title="Load Room">Load Room</a>
-                  </li>
-                  <li>
-                    <a href="#unload-room" class="toc-h2 toc-link" data-title="Unload Room">Unload Room</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#webview-management" class="toc-h1 toc-link" data-title="WebView Management">WebView Management</a>
               <ul class="toc-list-h2">
                   <li>
@@ -323,64 +304,104 @@
               </ul>
           </li>
           <li>
-            <a href="#lifecycle-events" class="toc-h1 toc-link" data-title="Lifecycle Events">Lifecycle Events</a>
+            <a href="#events" class="toc-h1 toc-link" data-title="Events">Events</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#onload" class="toc-h2 toc-link" data-title="onLoad">onLoad</a>
+                    <a href="#load" class="toc-h2 toc-link" data-title="Load">Load</a>
                   </li>
                   <li>
-                    <a href="#onpause" class="toc-h2 toc-link" data-title="onPause">onPause</a>
+                    <a href="#pause" class="toc-h2 toc-link" data-title="Pause">Pause</a>
                   </li>
                   <li>
-                    <a href="#onresume" class="toc-h2 toc-link" data-title="onResume">onResume</a>
+                    <a href="#resume" class="toc-h2 toc-link" data-title="Resume">Resume</a>
                   </li>
                   <li>
-                    <a href="#onmessagereceived" class="toc-h2 toc-link" data-title="onMessageReceived">onMessageReceived</a>
+                    <a href="#data-received" class="toc-h2 toc-link" data-title="Data Received">Data Received</a>
                   </li>
                   <li>
-                    <a href="#onturnchange" class="toc-h2 toc-link" data-title="onTurnChange">onTurnChange</a>
+                    <a href="#turn-change" class="toc-h2 toc-link" data-title="Turn Change">Turn Change</a>
                   </li>
                   <li>
-                    <a href="#onplayerjoined" class="toc-h2 toc-link" data-title="onPlayerJoined">onPlayerJoined</a>
+                    <a href="#player-join" class="toc-h2 toc-link" data-title="Player Join">Player Join</a>
                   </li>
                   <li>
-                    <a href="#onbackbuttonpressed" class="toc-h2 toc-link" data-title="onBackButtonPressed">onBackButtonPressed</a>
-                  </li>
-                  <li>
-                    <a href="#ongameend" class="toc-h2 toc-link" data-title="onGameEnd">onGameEnd</a>
+                    <a href="#game-end" class="toc-h2 toc-link" data-title="Game End">Game End</a>
                   </li>
                   <li>
                     <a href="#ongameexpiry" class="toc-h2 toc-link" data-title="onGameExpiry">onGameExpiry</a>
                   </li>
+                  <li>
+                    <a href="#back-button-press" class="toc-h2 toc-link" data-title="Back Button Press">Back Button Press</a>
+                  </li>
               </ul>
           </li>
       </div>
-        <ul class="toc-footer">
-            <li><a href='./index.html'>Introduction</a></li>
-            <li><a href='./dashboard.html'>Developer Dashboard</a></li>
-            <li><a href='./client-api-reference.html'>Client API Reference</a></li>
-            <li><a href='./server-api-reference.html'>Server API Reference</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
         <div class="dark-box"></div>
         <div class="content">
-          <h1 id='start-game'>Start Game</h1><h2 id='start-solo-game'>Start Solo Game</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">startSoloGame</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Start game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+          <h1 id='game-management'>Game Management</h1><h2 id='start-game'>Start Game</h2>
+<blockquote>
+<p>Create a solo room (offline):</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">start</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'solo'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Start game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Returns a <code>Room</code> generated offline. You can store this identifier in your game-store for future use-cases.</p>
-<h2 id='start-game-with-friends'>Start Game With Friends</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">startGame</span><span class="p">(</span><span class="nx">playerIdList</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room with friends created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Start game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<blockquote>
+<p>Create a room with a specified set of friends:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">start</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'friends'</span><span class="p">,</span>
+  <span class="na">players</span><span class="p">:</span> <span class="p">[</span><span class="s1">'alice@kapow.games'</span><span class="p">,</span> <span class="s1">'bob@kapow.games'</span><span class="p">],</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Start game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Creates a <code>Room</code> with the mentioned players, and sends out an invitation to all of them.</p>
+<blockquote>
+<p>Pop up dialog to pick friends to play with:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">start</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'friends'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Start game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Create a room with random players:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">start</span><span class="p">({</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'random'</span><span class="p">,</span>
+  <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"difficulty"</span><span class="p">:</span> <span class="s2">"medium"</span>
+  <span class="p">},</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Start game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Starts a game by creating a room according to the specified parameters.</p>
 
 <table><thead>
 <tr>
@@ -389,100 +410,124 @@
 </tr>
 </thead><tbody>
 <tr>
-<td>playerIdList</td>
-<td>An array of player-ids with whom you want to create a room. Eg. <code>[player_1@kapow.games, player_2@kapow.games]</code></td>
-</tr>
-</tbody></table>
-<h2 id='choose-friends-to-start-a-game-with'>Choose Friends To Start A Game With</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">startGameWithFriends</span><span class="p">(</span><span class="nx">minimumNumberOfPlayers</span><span class="p">,</span> <span class="nx">maximumNumberOfPlayers</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room with chosen friends created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Start game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Pops up an overlay asking the user to select a specific number of his friends to start a game with, creates and returns a new room with the selected players.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>minimumNumberOfPlayers</td>
-<td>Minimum number of players the user must select to create the room.</td>
+<td>type</td>
+<td>Type of room to be created. Possible values: <code>solo</code>/<code>friends</code>/<code>random</code></td>
 </tr>
 <tr>
-<td>maximumNumberOfPlayers</td>
-<td>Maximum number of players the user is allowed to select.</td>
+<td>players</td>
+<td>Array of player-ids with whom you want to create a room. Eg. <code>[alice@kapow.games, bob@kapow.games]</code>. If this value isn&#39;t mentioned, and the <code>type</code> is <code>friends</code>, Kapow will pop up the friend-selection dialog.</td>
 </tr>
-</tbody></table>
-<h2 id='start-game-with-random-players'>Start Game With Random Players</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">startGameWithRandomPlayers</span><span class="p">(</span><span class="nx">attributes</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room with random players created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Start game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Creates a room with <code>attributes</code>. When another player tries to start a game against random players with the same set of <code>attributes</code>, Kapow will add that player to this room.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
 <tr>
 <td>attributes</td>
-<td>A JSON object that&#39;ll be used to match players. Eg: <code>{&#39;difficultyLevel&#39;: &#39;medium&#39;}</code>.</td>
+<td>JSON object that&#39;ll be used to match players with each other in case of a <code>random</code> game.</td>
 </tr>
 </tbody></table>
-<h2 id='invite-player'>Invite player</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">invitePlayers</span><span class="p">(</span><span class="nx">minimumNumberOfPlayers</span><span class="p">,</span> <span class="nx">maximumNumberOfPlayers</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room with invited players"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Resume game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<h2 id='add-player'>Add Player</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">addPlayer</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room with invited player"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Resume game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Displays the native overlay to select and add players to the active room. Will return the updated <code>Room</code> in the success callback.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>minimumNumberOfPlayers</td>
-<td>Minimum number of players the user must select to create the room.</td>
-</tr>
-<tr>
-<td>maximumNumberOfPlayers</td>
-<td>Maximum number of players the user is allowed to select.</td>
-</tr>
-</tbody></table>
-<h2 id='rematch'>Rematch</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rematch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rematch room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="c1">// Start game play here</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<p>Displays the native overlay to select and add a player to the active room. Will return the updated <code>Room</code> in the success callback.</p>
+<h2 id='rematch'>Rematch</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">rematch</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rematch room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="c1">// Start game play here</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <p>Creates a new <code>Room</code> with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single <code>Room</code> is created for all of them.</p>
-<h1 id='end-game'>End Game</h1>
+<h2 id='end-game'>End Game</h2>
 <aside class="notice">
 Only solo games can be ended from the client. To end a multiplayer game, the `endGame` API needs to be triggered from the server.
 </aside>
-<h2 id='end-solo-game'>End Solo Game</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">endSoloGame</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo game ended"</span><span class="p">);</span>
-  <span class="c1">// Show the game-ended screen</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">end</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Solo game ended"</span><span class="p">);</span>
+    <span class="c1">// Show the game-ended screen</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <p>Tells Kapow that the solo game is over, and the app will stop listing the game in its list of currently active rooms.</p>
-<h1 id='history'>History</h1>
-<p>To fetch the moves that have been exchanged within a <code>Room</code> since the last time the game was open, either of the following two APIs can be used. Each returns a list of messages that have been exchanged in the group since the <code>message</code> denoted by <code>messageId</code> in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.</p>
+<h1 id='room-management'>Room Management</h1><h2 id='display-active-rooms'>Display Active Rooms</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">displayActiveRooms</span><span class="p">({</span>
+  <span class="na">onDismiss</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Dialog dismissed"</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Displays a pop up that shows the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.</p>
+<h2 id='get-active-rooms'>Get Active Rooms</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getActiveRooms</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">roomIndex</span> <span class="k">in</span> <span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room #"</span> <span class="o">+</span> <span class="nx">roomIndex</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">": "</span><span class="p">,</span> <span class="nx">rooms</span><span class="p">[</span><span class="nx">roomIndex</span><span class="p">]);</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre>
+<p>Returns the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.</p>
+<h2 id='load-room'>Load Room</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">loadRoom</span><span class="p">({</span>
+  <span class="na">roomId</span><span class="p">:</span> <span class="s1">'room@kapow.games'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Loaded room: "</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+    <span class="nx">startGamePlay</span><span class="p">(</span><span class="nx">room</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Loads the context of a <code>Room</code> indicated by the <code>roomId</code> to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
+For example: Call this when you want to take the user to the last room he was a part of (as fetched from <code>getActiveRooms</code>) on game load.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>roomId</td>
+<td>Identifier of the room to be loaded into context.</td>
+</tr>
+</tbody></table>
+<h2 id='unload-room'>Unload Room</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">unloadRoom</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unloaded room successfully"</span><span class="p">);</span>
+    <span class="c1">// Take the user to the game's home screen</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Unloads the context of a <code>Room</code> from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
+For example: Call this when the user clicks on <code>Start a new game</code> while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.</p>
+<h1 id='history'>History</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">fetch</span><span class="p">({</span>
+  <span class="na">messageId</span><span class="p">:</span> <span class="s1">'1517568717299-n8e-m202'</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'before'</span>
+  <span class="na">numberOfMessages</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Messages fetched from history"</span><span class="p">,</span> <span class="nx">messages</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Used to fetch the moves that have been exchanged within a <code>Room</code> since the last time the game was open. The API returns a list of messages that have been exchanged in the group since the <code>message</code> denoted by <code>messageId</code> in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.</p>
 
 <table><thead>
 <tr>
@@ -492,42 +537,34 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
 </thead><tbody>
 <tr>
 <td>messageId</td>
-<td>The id of the message before/after which you want to fetch messages. Pass <code>null</code> to get the history from the beginning.</td>
+<td>The id of the message before/after which you want to fetch messages. Skip this attribute to get the history from the beginning.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Possible values: <code>before</code>/<code>after</code>.</td>
 </tr>
 <tr>
 <td>numberOfMessages</td>
-<td>Number of messages you want to retrieve (maximum of 25).</td>
+<td>Number of messages you want to retrieve (maximum of 25). Default value is <code>25</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='fetch-messages-before'>Fetch messages before</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">fetchHistoryBefore</span><span class="p">(</span><span class="nx">messageId</span><span class="p">,</span> <span class="nx">numberOfMessages</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Messages fetched from history"</span><span class="p">,</span> <span class="nx">messages</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Returns a list of messages that were exchanged in the room before the specified <code>messageId</code>.</p>
-<h2 id='fetch-messages-after'>Fetch messages after</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">fetchHistoryAfter</span><span class="p">(</span><span class="nx">messageId</span><span class="p">,</span> <span class="nx">numberOfMessages</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Messages fetched from history"</span><span class="p">,</span> <span class="nx">messages</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Returns a list of messages that were exchanged in the room after the specified <code>messageId</code>.</p>
 <h1 id='invoke-server-function'>Invoke Server Function</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">invoke</span><span class="p">({</span>
-    <span class="na">functionName</span><span class="p">:</span> <span class="s1">'functionName'</span><span class="p">,</span>
-    <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span> <span class="s1">'key'</span><span class="p">:</span> <span class="s1">'value'</span> <span class="p">},</span>
-    <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="na">functionName</span><span class="p">:</span> <span class="s1">'functionName'</span><span class="p">,</span>
+  <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'key'</span><span class="p">:</span> <span class="s1">'value'</span>
   <span class="p">},</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="s2">"executed"</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Result of invoking server side function: "</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">// response.status == "scheduled"</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Function scheduled for invocation."</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while invoking server side function: "</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <blockquote>
 <p>Sample server side function:</p>
@@ -549,20 +586,20 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
 <p>Sample client side code:</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">invoke</span><span class="p">({</span>
-    <span class="na">functionName</span><span class="p">:</span> <span class="s1">'makeMove'</span><span class="p">,</span>
-    <span class="na">parameters</span><span class="p">:</span> <span class="nx">move</span><span class="p">,</span>
-    <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">false</span>
-  <span class="p">},</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="na">functionName</span><span class="p">:</span> <span class="s1">'makeMove'</span><span class="p">,</span>
+  <span class="na">parameters</span><span class="p">:</span> <span class="nx">move</span><span class="p">,</span>
+  <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Valid move"</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Invalid move"</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">},</span>
-  <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error: "</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p>Invokes the specified method within your server JavaScript file and passes the value you return from your function in the success callback.</p>
 
@@ -594,7 +631,7 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
 </thead><tbody>
 <tr>
 <td>status</td>
-<td>Indicates whether the request was <code>executed</code> or just <code>scheduled</code> (in case of lazily-invokable RPCs).</td>
+<td>Indicates whether the request was <code>executed</code> or just <code>scheduled</code> (in case of lazily-invoked RPCs).</td>
 </tr>
 <tr>
 <td>result</td>
@@ -609,7 +646,12 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
 <aside class="notice">
 The method on the server side that is to be invoked must be part of a globally accessible `game` object.
 </aside>
-<h1 id='analytics'>Analytics</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">analytics</span><span class="p">.</span><span class="nx">sendEvent</span><span class="p">(</span><span class="s1">'eventName'</span><span class="p">,</span> <span class="nx">attributes</span><span class="p">);</span>
+<h1 id='analytics'>Analytics</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">analytics</span><span class="p">.</span><span class="nx">sendEvent</span><span class="p">({</span>
+  <span class="na">eventName</span><span class="p">:</span> <span class="s1">'new_game_tapped'</span><span class="p">,</span>
+  <span class="na">attributes</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">source</span><span class="p">:</span> <span class="s1">'homescreen'</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p>Sends out an analytics event to Kapow servers. In future, there&#39;ll be a section in the Developer Dashboard where these events can be queried and visualized.</p>
 
@@ -625,7 +667,7 @@ The method on the server side that is to be invoked must be part of a globally a
 </tr>
 <tr>
 <td>attributes</td>
-<td>A JSON map of extra attributes <code>{&#39;key&#39;:&#39;value&#39;}</code> that need to be sent along with the event.</td>
+<td>A JSON map of extra attributes <code>{&#39;key&#39;:&#39;value&#39;}</code> that is to be sent along with the event.</td>
 </tr>
 </tbody></table>
 <h1 id='stores'>Stores</h1>
@@ -634,34 +676,54 @@ The method on the server side that is to be invoked must be part of a globally a
 <aside class="notice">
 If the `key` is missing in store, the success callback is invoked with a `null` value.
 </aside>
-<h2 id='game-store'>Game Store</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">gameStore</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully stored value"</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while storing value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<h2 id='game-store'>Game Store</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">gameStore</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s1">'key'</span><span class="p">,</span>
+  <span class="na">value</span><span class="p">:</span> <span class="nx">value</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully stored value"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while storing value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">kapow</span><span class="p">.</span><span class="nx">gameStore</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">kapow</span><span class="p">.</span><span class="nx">gameStore</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s1">'key'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully retrieved value"</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while retrieving value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-<span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p><code>gameStore</code> is used to store and retrieve data that is shared across multiple rooms. For example, user preferences such as in-game-sound settings (muted or not).</p>
-<h2 id='room-store'>Room Store</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">roomStore</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully stored value"</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while storing value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<h2 id='room-store'>Room Store</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">roomStore</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s1">'key'</span><span class="p">,</span>
+  <span class="na">value</span><span class="p">:</span> <span class="nx">value</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully stored value"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while storing value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 
-<span class="nx">kapow</span><span class="p">.</span><span class="nx">roomStore</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'key'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">kapow</span><span class="p">.</span><span class="nx">roomStore</span><span class="p">.</span><span class="nx">get</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="s1">'key'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully retrieved value"</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while retrieving value"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
-<span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p><code>roomStore</code> is used to store and retrieve data that is specific to a particular room.</p>
-<h1 id='information'>Information</h1><h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User information"</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+<h1 id='information'>Information</h1><h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User information"</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <blockquote>
@@ -677,8 +739,14 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Returns information regarding the user whose device the game is running on.</p>
-<h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerInfo</span><span class="p">(</span><span class="nx">playerId</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Player information"</span><span class="p">,</span> <span class="nx">player</span><span class="p">);</span>
+<h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerInfo</span><span class="p">({</span>
+  <span class="na">playerId</span><span class="p">:</span> <span class="s1">'alice@kapow.games'</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Player information"</span><span class="p">,</span> <span class="nx">player</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error fetching player information"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <blockquote>
@@ -701,11 +769,16 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </thead><tbody>
 <tr>
 <td>playerId</td>
-<td>The id of the player whose information you want to retreive.</td>
+<td>The id of the player whose information you want to retrieve.</td>
 </tr>
 </tbody></table>
-<h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room information"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+<h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room information"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while fetching room information"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <blockquote>
@@ -730,11 +803,16 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Returns information regarding the room that&#39;s loaded in the WebView.
-If a <code>room</code> has not been created yet, you&#39;ll receive a <code>null</code> response.</p>
-<h1 id='social-sharing'>Social Sharing</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">social</span><span class="p">.</span><span class="nx">share</span><span class="p">(</span><span class="nx">text</span><span class="p">,</span> <span class="nx">medium</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully shared"</span><span class="p">,</span> <span class="nx">text</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+If a <code>room</code> has not been created/loaded yet, you&#39;ll receive an error response.</p>
+<h1 id='social-sharing'>Social Sharing</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">social</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
+  <span class="na">text</span><span class="p">:</span> <span class="s2">"Hello, world!"</span><span class="p">,</span>
+  <span class="na">medium</span><span class="p">:</span> <span class="s2">"facebook"</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully shared"</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while sharing"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <p>Shares the <code>text</code> on the specified <code>medium</code>.</p>
@@ -751,12 +829,15 @@ If a <code>room</code> has not been created yet, you&#39;ll receive a <code>null
 </tr>
 <tr>
 <td>medium</td>
-<td>The medium on which you want to share the post. Either of <code>facebook</code>/<code>twitter</code>. Pass <code>null</code> if you want Kapow to pop up the generic share dialog.</td>
+<td>The medium on which you want to share the post. Either of <code>facebook</code>/<code>twitter</code>. Skip this attribute if you want Kapow to pop up the generic share dialog.</td>
 </tr>
 </tbody></table>
 <h1 id='scoreboard-display'>Scoreboard Display</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">displayScoreboard</span><span class="p">({</span>
-  <span class="s1">'metric'</span><span class="p">:</span> <span class="s1">'coins'</span><span class="p">,</span>
-  <span class="s1">'interval'</span><span class="p">:</span> <span class="s1">'alltime'</span>
+  <span class="na">metric</span><span class="p">:</span> <span class="s1">'coins'</span><span class="p">,</span>
+  <span class="na">interval</span><span class="p">:</span> <span class="s1">'alltime'</span><span class="p">,</span>
+  <span class="na">onDismiss</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Scoreboard dismissed"</span><span class="p">);</span>
+  <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
 <p>Displays the scoreboard for the specified <code>metric</code> and <code>interval</code>.</p>
@@ -776,72 +857,40 @@ If a <code>room</code> has not been created yet, you&#39;ll receive a <code>null
 <td>The time interval for which the stats are to be displayed. Possible values are: <code>daily</code>/<code>weekly</code>/<code>monthly</code>/<code>alltime</code>.</td>
 </tr>
 </tbody></table>
-<h1 id='room-management'>Room Management</h1><h2 id='display-active-rooms'>Display Active Rooms</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">displayActiveRooms</span><span class="p">();</span>
-</code></pre>
-<p>Displays a pop up that shows the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.</p>
-<h2 id='get-active-rooms'>Get Active Rooms</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getActiveRooms</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">roomIndex</span> <span class="k">in</span> <span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room #"</span> <span class="o">+</span> <span class="nx">roomIndex</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="s2">": "</span><span class="p">,</span> <span class="nx">rooms</span><span class="p">[</span><span class="nx">roomIndex</span><span class="p">]);</span>
-  <span class="p">}</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">})</span>
-</code></pre>
-<p>Returns the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.</p>
-<h2 id='load-room'>Load Room</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">loadRoom</span><span class="p">(</span><span class="nx">roomId</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Loaded room: "</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
-  <span class="nx">startGamePlay</span><span class="p">(</span><span class="nx">room</span><span class="p">);</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Loads the context of a <code>Room</code> indicated by the <code>roomId</code> to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
-For example: Call this when you want to take the user to the last room he was a part of (as fetched from <code>getActiveRooms</code>) on game load.</p>
-<h2 id='unload-room'>Unload Room</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">unloadRoom</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Unloaded room successfully"</span><span class="p">);</span>
-  <span class="c1">// Take the user to the game's home screen</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-<p>Unloads the context of a <code>Room</code> from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
-For example: Call this when the user clicks on <code>Start a new game</code> while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.</p>
 <h1 id='webview-management'>WebView Management</h1><h2 id='close-webview'>Close WebView</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
 </code></pre>
 <p>Closes the web-view and sends the user to the home-screen of Kapow.</p>
-<h1 id='lifecycle-events'>Lifecycle Events</h1>
-<aside class="notice">
-Each of these functions is to be defined inside the scope of a globally accessible `game` object.
-</aside>
-<h2 id='onload'>onLoad</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onLoad</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
+<h1 id='events'>Events</h1>
+<p>You can attach handlers to the following lifecycle events.</p>
+<h2 id='load'>Load</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'load'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">startGamePlay</span><span class="p">(</span><span class="nx">room</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="nx">displayHomeScreen</span><span class="p">();</span>
   <span class="p">}</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when the game is loaded, along with a <code>room</code> object (which can be <code>null</code> in case a room hasn’t been created yet).
+<p>Published when the game is loaded, along with a <code>room</code> object (which can be <code>null</code> in case a room hasn’t been created yet).
 Your game&#39;s code should only start executing from this point. Treat this as the equivalent of <code>document.onload</code>.</p>
-<h2 id='onpause'>onPause</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPause</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<h2 id='pause'>Pause</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'pause'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">muteSounds</span><span class="p">();</span>
   <span class="nx">pauseGame</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when the game loses focus (the app is put in the background). This is an indicator for the game developer to persist the game’s state in the <code>roomStore</code>.</p>
-<h2 id='onresume'>onResume</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onResume</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<p>Published when the game loses focus (the app is put in the background). This is an indicator for the game developer to persist the game’s state in the <code>roomStore</code>.</p>
+<h2 id='resume'>Resume</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'resume'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
   <span class="nx">unmuteSounds</span><span class="p">();</span>
   <span class="nx">resumeGame</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
 <p>Called when the game gains focus.</p>
-<h2 id='onmessagereceived'>onMessageReceived</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onMessageReceived</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='data-received'>Data Received</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">move</span> <span class="o">=</span> <span class="nx">packet</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
   <span class="nx">updateGameState</span><span class="p">(</span><span class="nx">move</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when one of the players sends out data.</p>
-<h2 id='onturnchange'>onTurnChange</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onTurnChange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+<p>Published when one of the players sends out data.</p>
+<h2 id='turn-change'>Turn Change</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'turn_change'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">player</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">displayOwnTurn</span><span class="p">();</span>
@@ -849,10 +898,10 @@ Your game&#39;s code should only start executing from this point. Treat this as 
       <span class="nx">displayOpponentsTurn</span><span class="p">();</span>
     <span class="p">}</span>
   <span class="p">});</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called as a result of a <code>setNextPlayer</code> API call. Indicates who the next player to make the move is. You can compare this with the user&#39;s own player-id to check if it&#39;s his turn currently.</p>
-<h2 id='onplayerjoined'>onPlayerJoined</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerJoin</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+<p>Published as a result of a <code>setNextPlayer</code> API call. Indicates who the next player to make the move is. You can compare this with the user&#39;s own player-id to check if it&#39;s his turn currently.</p>
+<h2 id='player-join'>Player Join</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'player_join'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">countOfAcceptedPlayers</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">room</span><span class="p">.</span><span class="nx">players</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
@@ -865,30 +914,30 @@ Your game&#39;s code should only start executing from this point. Treat this as 
       <span class="nx">startGamePlay</span><span class="p">(</span><span class="nx">room</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">});</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when a new/invited player joins/accepts an invitation to the room.</p>
-<h2 id='onbackbuttonpressed'>onBackButtonPressed</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onBackButtonPress</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">isUserOnGamePlayScreen</span><span class="p">())</span> <span class="p">{</span>
-        <span class="nx">showConfirmationDialog</span><span class="p">();</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre>
-<p>Called when the user presses the back-button. 
-Return <code>true</code> if you are handling this particular event on your own. If not, Kapow will close the web-view.</p>
-<h2 id='ongameend'>onGameEnd</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onGameEnd</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outcome</span><span class="p">)</span> <span class="p">{</span>
+<p>Published when a new/invited player joins/accepts an invitation to the room.</p>
+<h2 id='game-end'>Game End</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'game_end'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outcome</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">displayOutcomeScreen</span><span class="p">(</span><span class="nx">outcome</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when the server signals the end of a game.</p>
-<h2 id='ongameexpiry'>onGameExpiry</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onGameExpiry</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+<p>Published when the server signals the end of a game.</p>
+<h2 id='ongameexpiry'>onGameExpiry</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'game_expire'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outcome</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">showGameExpiredScreen</span><span class="p">();</span>
-<span class="p">}</span>
+<span class="p">});</span>
 </code></pre>
-<p>Called when the invite to a friend/random opponent expires. The room will be closed post this.</p>
+<p>Published when the invite to a friend/random opponent expires. The room will be closed post this.</p>
+<h2 id='back-button-press'>Back Button Press</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'back_button_press'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isUserOnGamePlayScreen</span><span class="p">())</span> <span class="p">{</span>
+    <span class="nx">showConfirmationDialog</span><span class="p">();</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>Published when the user presses the back-button. 
+Return <code>true</code> if you are handling this particular event on your own. If not, Kapow will close the web-view.</p>
 
         </div>
         <div class="dark-box">
