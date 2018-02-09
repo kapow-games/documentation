@@ -64,7 +64,7 @@ Starts a game by creating a room according to the specified parameters.
 
 Parameter | Description
 --------- | -----------
-type | Type of room to be created. Possible values: `solo`/`friends`/`random`
+type | Type of room to be created. Possible values: `solo`/`friends`/`random`.
 players | Array of player-ids with whom you want to create a room. Eg. `[alice@kapow.games, bob@kapow.games]`. If this value isn't mentioned, and the `type` is `friends`, Kapow will pop up the friend-selection dialog.
 attributes | JSON object that'll be used to match players with each other in case of a `random` game.
 
@@ -346,28 +346,6 @@ kapow.roomStore.get({
 
 # Information
 
-## Get User Information
-```javascript
-kapow.getUserInfo({
-  onSuccess: function(user) {
-    console.log("User information", user);
-  }
-});
-```
-> Sample User Object:
-
-```json
-{
-	player:	{
-	    name: "Kapow User",
-	    id: "kapow_user_identifier",
-	    profileImage: "https://example.com/photo.jpg",
-	    affiliation: "accepted"
-	}
-}
-```
-Returns information regarding the user whose device the game is running on.
-
 ## Get Player Information
 ```javascript
 kapow.getPlayerInfo({
@@ -384,10 +362,10 @@ kapow.getPlayerInfo({
 
 ```json
 {
-    name: "Kapow User",
-    id: "kapow_user_identifier",
-    profileImage: "https://example.com/photo.jpg",
-    affiliation: "invited"/"accepted"/"left"/"rejected"/"unknown"
+    id: 'alice@kapow.games',
+    name: 'Alice Michael',
+    profileImage: 'https://kapow.games/alice.jpg',
+    affiliation: 'invited'
 }
 ```
 
@@ -395,7 +373,42 @@ Returns information regarding the player, denoted by `playerId`.
 
 Parameter | Description
 --------- | -----------
-playerId | The id of the player whose information you want to retrieve.
+playerId | The identifier of the player whose information you want to retrieve.
+
+
+Player Attribute | Description
+---------------- | -----------
+id | Identifier of the player whose information was retrieved.
+name | Full name of the player.
+profileImage | URL to the user's profile image.
+affiliation | The user's affiliation in the room. Possible values: `invited`/`accepted`/`left`/`rejected`/`unknown`.
+
+
+## Get User Information
+```javascript
+kapow.getUserInfo({
+  onSuccess: function(user) {
+    console.log("User information", user);
+  }
+});
+```
+> Sample User Object:
+
+```json
+{
+  player: {
+    id: 'alice@kapow.games',
+    name: 'Alice Michael',
+    profileImage: 'https://kapow.games/alice.jpg',
+    affiliation: 'invited'
+  }
+}
+```
+Returns information regarding the user whose device the game is running on.
+
+User Attribute | Description
+---------------- | -----------
+player | Player object corresponding to the user.
 
 ## Get Room Information
 ```javascript
