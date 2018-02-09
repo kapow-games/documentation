@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="dashboard" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -216,10 +216,22 @@
         <ul class="search-results"></ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#developer-dashboard" class="toc-h1 toc-link" data-title="Developer Dashboard">Developer Dashboard</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#benefits" class="toc-h2 toc-link" data-title="Benefits">Benefits</a>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#distribution" class="toc-h2 toc-link" data-title="Distribution">Distribution</a>
+                  </li>
+                  <li>
+                    <a href="#boards" class="toc-h2 toc-link" data-title="Boards">Boards</a>
+                  </li>
+                  <li>
+                    <a href="#server-logs" class="toc-h2 toc-link" data-title="Server Logs">Server Logs</a>
+                  </li>
+                  <li>
+                    <a href="#client-logs" class="toc-h2 toc-link" data-title="Client Logs">Client Logs</a>
                   </li>
               </ul>
           </li>
@@ -233,26 +245,34 @@
     </div>
     <div class="page-wrapper">
         <div class="full_content">
-          <h1 id='introduction'>Introduction</h1>
-<p>The Kapow iOS and Android mobile apps allow users to play games with their friends. There can be multiple game sessions (of the same, or of different games) active at any time. Each game session can have two or more users, including observers. The users can communicate with each other with an in-app chat as they are playing. Games can generate and send rich notifications to users.</p>
+          <h1 id='developer-dashboard'>Developer Dashboard</h1>
+<p>You can sign up on the <a href="https://dev.kapow.games">Kapow Developer Dashboard</a> with your official email address (ideally one that is accessible to your engineering and product leads). </p>
 
-<p>Kapow games are HTML 5 games. The game developer does not have to adopt any new technology. The Kapow platform ensures that games run on a modern WebKit incarnation (think Safari and Chrome), so the game developer does not have to worry about compatibility with an unknown set of browsers.</p>
+<p>On the developer dashboard, you have the option of either uploading the game as a zip file, or providing the URL from where the game will be fetched each time.</p>
 
-<p>The Kapow SDK provides JavaScript APIs tailored for writing games.</p>
-<h2 id='benefits'>Benefits</h2><h3 id='high-level'>High Level</h3>
-<p>The API primitives - &quot;Game Data&quot;, &quot;Player&quot;, &quot;Room&quot; - are designed to be at level of abstraction where the custom game logic code can directly work with them.</p>
-<h3 id='network'>Network</h3>
-<p>The SDK transparently handles peer endpoint discovery, network connectivity changes, and the actual network connections. Kapow servers buffer data to ensure that it gets delivered to players who are currently offline.</p>
-<h3 id='cheat-proof'>Cheat Proof</h3>
-<p>The SDK enforces an architecture based on an untrusted client model. This ensures that no player can cheat by gaining an information advantage, even if they run a modified copy of the Kapow app.</p>
-<h3 id='hosting'>Hosting</h3>
-<p>Kapow takes care of hosting the game, and intelligently caching it on the user&#39;s device for responsiveness.</p>
-<h3 id='leaderboards-replays-in-game-chat'>Leaderboards, Replays, In-game chat</h3>
-<p>The Kapow app provides all the essentials that gamers have come to expect from good games, without requiring the game developer to write any custom code.</p>
+<p>During development, your developers can specify a URL where they have hosted your game. This can be set to the IP address of the developer&#39;s machine, and your developers can start a local web server to serve the code that they are currently working on. Then, each time they start the game inside the mobile app, it will display the latest code that is served by the web server on the developer&#39;s machine.</p>
 
-<p>Unlike general purpose app stores which use coarse-grained statistics like the number of downloads, Kapow uses gaming related metrics for ranking games when listing them for the user. These rankings are personalized for each user based on her play history. Kapow&#39;s content recommendation engine can use the genre specific metadata for each game. All these result in improved game discovery for the user and improved discoverability for game developers.</p>
+<p>Games that are leveraging Kapow&#39;s <a href="https://github.com/kapow-games/docs/wiki/Server-API-Reference">server side APIs</a> will also need to provide a publicly accessible link to their <code>server.js</code> file that contains code that can be invoked remotely. Kapow does not poll this file for updates, so you will have to manually click on &#39;Save Changes&#39; each time there&#39;s an update you&#39;d like to reflect on the server side.</p>
+<h2 id='configuration'>Configuration</h2><h3 id='game-url'>Game URL</h3>
+<p>URL to the location where the game is hosted. Eg: <code>https://example.com/game/index.html</code>.</p>
+<h3 id='server-url'>Server URL</h3>
+<p>URL to the location of your server side JavaScript file. Eg: <code>https://example.com/game/server/server.js</code>.</p>
+<h3 id='number-of-players'>Number of Players</h3>
+<p>When a player chooses to play against random opponents, Kapow will lock the room if auto-room-locking is enabled once these many players have joined the room. The game does have the option to unlock the room post this.</p>
+<h3 id='auto-room-locking'>Auto Room Locking</h3>
+<p>This is to tell Kapow whether it should auto lock the room when the specified number of players have joined a room filled with random players.</p>
+<h2 id='distribution'>Distribution</h2>
+<p>For as long as your game is in the beta phase, it will not be surfaced to the general public. To let your team members view and test the game, you will have to list down their Facebook email addresses in the <code>Distribution</code> section.</p>
 
-<p>To summarize, Kapow lets game developers focus on the game content by taking care of the infrastructure tasks, and provide them with a platform where they can grow viral simply by the virtue of their content.</p>
+<aside class="notice">
+Please note that only email addresses of users who have registered on the Kapow app can be used entered here.
+</aside>
+<h2 id='boards'>Boards</h2>
+<p>If your game contains scoreboards, you can configure them here. For more information, check out the FAQ page.</p>
+<h2 id='server-logs'>Server Logs</h2>
+<p>Logs emitted by your server script will be displayed here.</p>
+<h2 id='client-logs'>Client Logs</h2>
+<p>Logs emitted by your client script will be displayed here.</p>
 
         </div>
     </div>

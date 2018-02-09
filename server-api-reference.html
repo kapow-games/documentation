@@ -1,0 +1,604 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Server API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="server-api-reference" data-languages="[&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.svg" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#broadcast-data" class="toc-h1 toc-link" data-title="Broadcast Data">Broadcast Data</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#send-turn" class="toc-h2 toc-link" data-title="Send Turn">Send Turn</a>
+                  </li>
+                  <li>
+                    <a href="#send-data" class="toc-h2 toc-link" data-title="Send Data">Send Data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#room-management" class="toc-h1 toc-link" data-title="Room Management">Room Management</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#set-next-player" class="toc-h2 toc-link" data-title="Set Next Player">Set Next Player</a>
+                  </li>
+                  <li>
+                    <a href="#end-game" class="toc-h2 toc-link" data-title="End Game">End Game</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-rpc" class="toc-h2 toc-link" data-title="Schedule RPC">Schedule RPC</a>
+                  </li>
+                  <li>
+                    <a href="#schedule-rpc-for-room" class="toc-h2 toc-link" data-title="Schedule RPC for Room">Schedule RPC for Room</a>
+                  </li>
+                  <li>
+                    <a href="#send-notification" class="toc-h2 toc-link" data-title="Send Notification">Send Notification</a>
+                  </li>
+                  <li>
+                    <a href="#get-player-id" class="toc-h2 toc-link" data-title="Get Player ID">Get Player ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-room-info" class="toc-h2 toc-link" data-title="Get Room Info">Get Room Info</a>
+                  </li>
+                  <li>
+                    <a href="#post-to-feed" class="toc-h2 toc-link" data-title="Post to Feed">Post to Feed</a>
+                  </li>
+                  <li>
+                    <a href="#post-to-scoreboard" class="toc-h2 toc-link" data-title="Post to Scoreboard">Post to Scoreboard</a>
+                  </li>
+                  <li>
+                    <a href="#analytics" class="toc-h2 toc-link" data-title="Analytics">Analytics</a>
+                  </li>
+                  <li>
+                    <a href="#return-response" class="toc-h2 toc-link" data-title="Return Response">Return Response</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#lifecycle-events" class="toc-h1 toc-link" data-title="Lifecycle events">Lifecycle events</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#onplayerjoined" class="toc-h2 toc-link" data-title="onPlayerJoined">onPlayerJoined</a>
+                  </li>
+                  <li>
+                    <a href="#onplayerleft" class="toc-h2 toc-link" data-title="onPlayerLeft()">onPlayerLeft()</a>
+                  </li>
+                  <li>
+                    <a href="#oninviterejected-player" class="toc-h2 toc-link" data-title="onInviteRejected(<player>)</player>">onInviteRejected(<player>)</player></a>
+                  </li>
+              </ul>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='./index.html'>Introduction</a></li>
+            <li><a href='./dashboard.html'>Developer Dashboard</a></li>
+            <li><a href='./client-api-reference.html'>Client API Reference</a></li>
+            <li><a href='./server-api-reference.html'>Server API Reference</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+          <h1 id='broadcast-data'>Broadcast Data</h1><h2 id='send-turn'>Send Turn</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">sendTurn</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">,</span> <span class="nx">fromPlayerId</span><span class="p">,</span> <span class="nx">nextPlayerId</span><span class="p">,</span> <span class="nx">notification</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully sent data"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Broadcasts <code>data</code> to all players in the room on behalf of <code>fromPlayerId</code> as a move (triggering the <code>onDataReceived(message)</code> function for every player), sets the next player to <code>nextPlayerId</code>, and sends him a notification if specified. If you want to skip the part where Kapow sends the next player a notification, you can pass <code>null</code> in place of the notification parameter.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Data to be broadcasted within the room.</td>
+</tr>
+<tr>
+<td>roomId</td>
+<td>Identifier for the room in which the data to be broadcasted.</td>
+</tr>
+<tr>
+<td>fromPlayerId</td>
+<td>Player on behalf of whom the data is to be broadcasted.</td>
+</tr>
+<tr>
+<td>nextPlayerId</td>
+<td>Player whose turn it is next.</td>
+</tr>
+<tr>
+<td>notification</td>
+<td>Notification that should be sent to the player identified by <code>nextPlayerId</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='send-data'>Send Data</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">sendData</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">fromPlayerId</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully sent data"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Broadcasts data to all players in the room on behalf of the specified player as a move. This triggers the onDataReceived(message) function for every player.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Data to be broadcasted within the room.</td>
+</tr>
+<tr>
+<td>fromPlayerId</td>
+<td>Player on behalf of whom the data is to be broadcasted.</td>
+</tr>
+<tr>
+<td>roomId</td>
+<td>Identifier to the room in which the data to be broadcasted.</td>
+</tr>
+</tbody></table>
+<h1 id='room-management'>Room Management</h1><h2 id='set-next-player'>Set Next Player</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">setNextPlayer</span><span class="p">(</span><span class="nx">playerId</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully set the next player"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Tells every player in the room whose turn it is next. This triggers the <code>onTurnChanged(playerId)</code> function on the client side.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>playerId</td>
+<td>Identifier for the player whose turn it is next.</td>
+</tr>
+<tr>
+<td>roomId</td>
+<td>Identifier for the room that the player is a part of.</td>
+</tr>
+</tbody></table>
+<h2 id='end-game'>End Game</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">outcome</span><span class="p">,</span> <span class="nx">roomId</span><span class="p">,</span> <span class="nx">successCb</span><span class="p">,</span> <span class="nx">failureCb</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">end</span><span class="p">({</span>
+    <span class="s1">'type'</span><span class="p">:</span> <span class="s1">'result'</span>
+    <span class="s1">'ranks'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'player_1_id'</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">'player_2_id'</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="s1">'data'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'extraData'</span><span class="p">:</span> <span class="s1">'toBeBroadcasted'</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="s1">'room@groups.kapow.games'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully ended game"</span><span class="p">);</span>
+    <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"success"</span>
+    <span class="p">});</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Game could not be ended"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+    <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"error"</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+<p>Triggers the <code>onGameEnd</code> callback within the room with the passed outcome object and saves it on Kapow servers. Any extra data that you want the clients to receive within this callback can be set inside the data field of the outcome object.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>Type of outcome. Possible values are: <code>result</code>/<code>resignation</code>/<code>draw</code>/<code>timeout</code>.</td>
+</tr>
+<tr>
+<td>ranks</td>
+<td>Map of player identifiers to their respective ranks.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Extra data that you want to transmit along with the outcome.</td>
+</tr>
+</tbody></table>
+<h2 id='schedule-rpc'>Schedule RPC</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">schedule</span><span class="p">(</span><span class="nx">functionName</span><span class="p">,</span> <span class="nx">parameter</span><span class="p">,</span> <span class="nx">delayInMinutes</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully scheduled RPC"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while scheduling RPC"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Schedules invocation of a function referenced by <code>functionName</code> in your server side code, within a globally defined <code>game</code> object, with the specified <code>parameter</code>, after the specified time <code>delay</code> in minutes. It&#39;s equivalent to invoking <code>game.functionName(parameter)</code> after a set-timeout.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>functionName</td>
+<td>Name of the function to be invoked.</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td>Parameter to be passed to the specified function during invocation.</td>
+</tr>
+<tr>
+<td>delayInMinutes</td>
+<td>Amount of time, in minutes, post which the function is to be invoked.</td>
+</tr>
+</tbody></table>
+<h2 id='schedule-rpc-for-room'>Schedule RPC for Room</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">scheduleForRoom</span><span class="p">(</span><span class="nx">roomId</span><span class="p">,</span> <span class="nx">functionName</span><span class="p">,</span> <span class="nx">parameter</span><span class="p">,</span> <span class="nx">delayInMinutes</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully scheduled RPC"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while scheduling RPC"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Schedules invocation of a function referenced by <code>functionName</code> in your server side code, within a globally defined <code>game</code> object, with the specified <code>parameter</code>, after the specified time <code>delay</code> in minutes, in the context of the room specified by <code>roomId</code>. It&#39;s equivalent to invoking <code>game.functionName(parameter)</code> after a set-timeout.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>roomId</td>
+<td>Room in the context of which you want this function to be invoked.</td>
+</tr>
+<tr>
+<td>functionName</td>
+<td>Name of the function to be invoked.</td>
+</tr>
+<tr>
+<td>parameter</td>
+<td>Parameter to be passed to the specified function during invocation.</td>
+</tr>
+<tr>
+<td>delayInMinutes</td>
+<td>Amount of time, in minutes, post which the function is to be invoked.</td>
+</tr>
+</tbody></table>
+<h2 id='send-notification'>Send Notification</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">sendNotification</span><span class="p">(</span><span class="nx">playerId</span><span class="p">,</span> <span class="nx">notification</span><span class="p">,</span> <span class="nx">successCb</span><span class="p">,</span> <span class="nx">failureCb</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">sendNotification</span><span class="p">(</span><span class="s1">'player@kapow.games'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">'id'</span><span class="p">:</span> <span class="s1">'unique_identifier'</span><span class="p">,</span> <span class="c1">// Optional</span>
+    <span class="s1">'title'</span><span class="p">:</span> <span class="s1">'My Awesome Game'</span><span class="p">,</span>
+    <span class="s1">'text'</span><span class="p">:</span> <span class="s1">'Hello, World!'</span><span class="p">,</span>
+    <span class="s1">'buttons'</span><span class="p">:</span> <span class="p">[{</span>
+        <span class="s1">'text'</span><span class="p">:</span> <span class="s1">'Ok'</span><span class="p">,</span>
+        <span class="s1">'action'</span><span class="p">:</span> <span class="s1">'action'</span>
+    <span class="p">},</span> <span class="p">{</span>
+        <span class="s1">'text'</span><span class="p">:</span> <span class="s1">'Cancel'</span><span class="p">,</span>
+        <span class="s1">'action'</span><span class="p">:</span> <span class="s1">'action'</span>
+    <span class="p">}]</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully sent notification"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error sending notification"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Sends a notification to the specified player.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>playerId</td>
+<td>Identifier for the player to whom the notification is to be sent.</td>
+</tr>
+<tr>
+<td>notification</td>
+<td>The notification to be sent.</td>
+</tr>
+</tbody></table>
+<h2 id='get-player-id'>Get Player ID</h2><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">playerId</span> <span class="o">=</span> <span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerId</span><span class="p">();</span>
+</code></pre>
+<p>Returns the identifier of the player who invoked the RPC.</p>
+<h2 id='get-room-info'>Get Room Info</h2><pre class="highlight javascript tab-javascript"><code><span class="kd">var</span> <span class="nx">roomInfo</span> <span class="o">=</span> <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">()</span>
+</code></pre>
+<p>Returns information regarding the room in whose context the server side code was invoked. The returned object will contain an array called <code>playerInfos</code> which will contain a list of Player objects and an array called players which will contain a list of player-ids.</p>
+<h2 id='post-to-feed'>Post to Feed</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">feedpost</span><span class="p">,</span> <span class="nx">successCb</span><span class="p">,</span> <span class="nx">failureCb</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">feeds</span><span class="p">.</span><span class="nx">post</span><span class="p">({</span>
+    <span class="s1">'playerId'</span><span class="p">:</span> <span class="s1">'dave@kapow.games'</span><span class="p">,</span>
+    <span class="s1">'templateValues'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'player'</span><span class="p">:</span> <span class="s1">'Dave'</span><span class="p">,</span>
+        <span class="s1">'level'</span><span class="p">:</span> <span class="s1">'10'</span><span class="p">,</span>
+        <span class="s1">'starCount'</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully posted to feed"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error posting to feed"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Applies the passed FeedPost object&#39;s templateValues to the game specific template, and publishes it to the specified player&#39;s feed.</p>
+<h2 id='post-to-scoreboard'>Post to Scoreboard</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">postScores</span><span class="p">(</span><span class="nx">scores</span><span class="p">,</span> <span class="nx">successCb</span><span class="p">,</span> <span class="nx">failureCb</span><span class="p">);</span>
+</code></pre>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">postScores</span><span class="p">({</span>
+    <span class="s1">'playerId'</span><span class="p">:</span> <span class="s1">'player@kapow.games'</span><span class="p">,</span>
+    <span class="s1">'scores'</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'gold'</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+        <span class="s1">'points'</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+        <span class="s1">'time'</span><span class="p">:</span> <span class="mf">43.21</span>
+    <span class="p">}</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully posted scores"</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error posting scores"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+<p>Posts the passed set of scores to Kapow&#39;s leaderboards for the specified player.</p>
+<h2 id='analytics'>Analytics</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">analytics</span><span class="p">.</span><span class="nx">sendEvent</span><span class="p">(</span><span class="s1">'eventName'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="s1">'attribute'</span><span class="p">:</span> <span class="s1">'map'</span>
+<span class="p">});</span>
+</code></pre>
+<p>Sends out an analytics event to our servers. We&#39;ll provide a section in the Developer Dashboard where these can be queried and visualized.</p>
+<h2 id='return-response'>Return Response</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+</code></pre>
+<p>Returns data as a response to the client that invoked the server side function. If there is an error, you can call <code>kapow.return(null, error)</code> to invoke the failure callback on the client.</p>
+<h1 id='lifecycle-events'>Lifecycle events</h1>
+<aside class="notice">
+Each of these functions is to be defined inside the scope of a globally accessible `game` object.
+</aside>
+<h2 id='onplayerjoined'>onPlayerJoined</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerJoined</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">doStuffOnPlayerJoin</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>Called when a new/invited player joins/accepts an invitation to the room.</p>
+<h2 id='onplayerleft'>onPlayerLeft()</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerLeft</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">doStuffOnPlayerLeave</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>Called when an existing player leaves.</p>
+<h2 id='oninviterejected-player'>onInviteRejected(<Player>)</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onInviteRejected</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">doStuffOnInviteRejected</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre>
+<p>Called when an invited player rejects the invite.</p>
+
+        </div>
+        <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">code</a>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
