@@ -11,7 +11,7 @@ game.onPlayerJoined = function(player) {
 ```
 Called when a new/invited player joins/accepts an invitation to the room.
 
-## onPlayerLeft()
+## onPlayerLeft
 ```javascript
 game.onPlayerLeft = function(player) {
   doStuffOnPlayerLeave(player);
@@ -19,10 +19,20 @@ game.onPlayerLeft = function(player) {
 ```
 Called when an existing player leaves.
 
-## onInviteRejected(<Player>)
+## onInviteRejected
 ```javascript
 game.onInviteRejected = function(player) {
   doStuffOnInviteRejected(player);
 }
 ```
 Called when an invited player rejects the invite.
+
+# Storage
+On demand, we'll provision a DynamoDB table or a MySQL database for you that can be used for storing and retrieving data.
+
+# Libraries
+These third-party libraries are at your disposal:
+* [request](https://github.com/request/request)
+* [sql](https://github.com/mysqljs/mysql)
+
+You can include them with a `require('mysql')` command.
