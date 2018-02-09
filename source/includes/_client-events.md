@@ -31,7 +31,7 @@ kapow.on('resume', function() {
 ```
 Called when the game gains focus.
 
-## Data Received
+## Incoming Data
 ```javascript
 kapow.on('data', function(packet) {
   var move = packet.data;
