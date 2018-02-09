@@ -274,12 +274,18 @@
                     <a href="#onplayerjoined" class="toc-h2 toc-link" data-title="onPlayerJoined">onPlayerJoined</a>
                   </li>
                   <li>
-                    <a href="#onplayerleft" class="toc-h2 toc-link" data-title="onPlayerLeft()">onPlayerLeft()</a>
+                    <a href="#onplayerleft" class="toc-h2 toc-link" data-title="onPlayerLeft">onPlayerLeft</a>
                   </li>
                   <li>
-                    <a href="#oninviterejected-player" class="toc-h2 toc-link" data-title="onInviteRejected(<player>)</player>">onInviteRejected(<player>)</player></a>
+                    <a href="#oninviterejected" class="toc-h2 toc-link" data-title="onInviteRejected">onInviteRejected</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#storage" class="toc-h1 toc-link" data-title="Storage">Storage</a>
+          </li>
+          <li>
+            <a href="#libraries" class="toc-h1 toc-link" data-title="Libraries">Libraries</a>
           </li>
       </div>
         <ul class="toc-footer">
@@ -582,16 +588,24 @@ Each of these functions is to be defined inside the scope of a globally accessib
 <span class="p">}</span>
 </code></pre>
 <p>Called when a new/invited player joins/accepts an invitation to the room.</p>
-<h2 id='onplayerleft'>onPlayerLeft()</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerLeft</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='onplayerleft'>onPlayerLeft</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onPlayerLeft</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">doStuffOnPlayerLeave</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
 <p>Called when an existing player leaves.</p>
-<h2 id='oninviterejected-player'>onInviteRejected(<Player>)</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onInviteRejected</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='oninviterejected'>onInviteRejected</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onInviteRejected</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">doStuffOnInviteRejected</span><span class="p">(</span><span class="nx">player</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
 <p>Called when an invited player rejects the invite.</p>
+<h1 id='storage'>Storage</h1>
+<p>On demand, we&#39;ll provision a DynamoDB table or a MySQL database for you that can be used for storing and retrieving data.</p>
+<h1 id='libraries'>Libraries</h1>
+<p>These third-party libraries are at your disposal:
+* <a href="https://github.com/request/request">request</a>
+* <a href="https://github.com/mysqljs/mysql">sql</a></p>
+
+<p>You can include them with a <code>require(&#39;mysql&#39;)</code> command.</p>
 
         </div>
         <div class="dark-box">
