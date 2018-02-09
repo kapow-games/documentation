@@ -316,7 +316,7 @@
                     <a href="#resume" class="toc-h2 toc-link" data-title="Resume">Resume</a>
                   </li>
                   <li>
-                    <a href="#data-received" class="toc-h2 toc-link" data-title="Data Received">Data Received</a>
+                    <a href="#incoming-data" class="toc-h2 toc-link" data-title="Incoming Data">Incoming Data</a>
                   </li>
                   <li>
                     <a href="#turn-change" class="toc-h2 toc-link" data-title="Turn Change">Turn Change</a>
@@ -884,7 +884,7 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">});</span>
 </code></pre>
 <p>Called when the game gains focus.</p>
-<h2 id='data-received'>Data Received</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='incoming-data'>Incoming Data</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'data'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packet</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">move</span> <span class="o">=</span> <span class="nx">packet</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
   <span class="nx">updateGameState</span><span class="p">(</span><span class="nx">move</span><span class="p">);</span>
 <span class="p">});</span>
