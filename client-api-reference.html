@@ -279,10 +279,10 @@
             <a href="#information" class="toc-h1 toc-link" data-title="Information">Information</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-user-information" class="toc-h2 toc-link" data-title="Get User Information">Get User Information</a>
+                    <a href="#get-player-information" class="toc-h2 toc-link" data-title="Get Player Information">Get Player Information</a>
                   </li>
                   <li>
-                    <a href="#get-player-information" class="toc-h2 toc-link" data-title="Get Player Information">Get Player Information</a>
+                    <a href="#get-user-information" class="toc-h2 toc-link" data-title="Get User Information">Get User Information</a>
                   </li>
                   <li>
                     <a href="#get-room-information" class="toc-h2 toc-link" data-title="Get Room Information">Get Room Information</a>
@@ -411,7 +411,7 @@
 </thead><tbody>
 <tr>
 <td>type</td>
-<td>Type of room to be created. Possible values: <code>solo</code>/<code>friends</code>/<code>random</code></td>
+<td>Type of room to be created. Possible values: <code>solo</code>/<code>friends</code>/<code>random</code>.</td>
 </tr>
 <tr>
 <td>players</td>
@@ -720,26 +720,7 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <span class="p">});</span>
 </code></pre>
 <p><code>roomStore</code> is used to store and retrieve data that is specific to a particular room.</p>
-<h1 id='information'>Information</h1><h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">({</span>
-  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User information"</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre>
-<blockquote>
-<p>Sample User Object:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="err">player</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kapow User"</span><span class="p">,</span><span class="w">
-        </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"kapow_user_identifier"</span><span class="p">,</span><span class="w">
-        </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/photo.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Returns information regarding the user whose device the game is running on.</p>
-<h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerInfo</span><span class="p">({</span>
+<h1 id='information'>Information</h1><h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerInfo</span><span class="p">({</span>
   <span class="na">playerId</span><span class="p">:</span> <span class="s1">'alice@kapow.games'</span><span class="p">,</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Player information"</span><span class="p">,</span> <span class="nx">player</span><span class="p">);</span>
@@ -753,10 +734,10 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <p>Sample Player Object:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Kapow User"</span><span class="p">,</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"kapow_user_identifier"</span><span class="p">,</span><span class="w">
-    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/photo.jpg"</span><span class="p">,</span><span class="w">
-    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="err">/</span><span class="s2">"accepted"</span><span class="err">/</span><span class="s2">"left"</span><span class="err">/</span><span class="s2">"rejected"</span><span class="err">/</span><span class="s2">"unknown"</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">'alice@kapow.games'</span><span class="p">,</span><span class="w">
+    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="err">'Alice</span><span class="w"> </span><span class="err">Michael'</span><span class="p">,</span><span class="w">
+    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//kapow.games/alice.jpg'</span><span class="p">,</span><span class="w">
+    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="err">'invited'</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Returns information regarding the player, denoted by <code>playerId</code>.</p>
@@ -769,7 +750,62 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </thead><tbody>
 <tr>
 <td>playerId</td>
-<td>The id of the player whose information you want to retrieve.</td>
+<td>The identifier of the player whose information you want to retrieve.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Player Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Identifier of the player whose information was retrieved.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Full name of the player.</td>
+</tr>
+<tr>
+<td>profileImage</td>
+<td>URL to the user&#39;s profile image.</td>
+</tr>
+<tr>
+<td>affiliation</td>
+<td>The user&#39;s affiliation in the room. Possible values: <code>invited</code>/<code>accepted</code>/<code>left</code>/<code>rejected</code>/<code>unknown</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">({</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User information"</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>Sample User Object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">player</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">'alice@kapow.games'</span><span class="p">,</span><span class="w">
+    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="err">'Alice</span><span class="w"> </span><span class="err">Michael'</span><span class="p">,</span><span class="w">
+    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//kapow.games/alice.jpg'</span><span class="p">,</span><span class="w">
+    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="err">'invited'</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Returns information regarding the user whose device the game is running on.</p>
+
+<table><thead>
+<tr>
+<th>User Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>player</td>
+<td>Player object corresponding to the user.</td>
 </tr>
 </tbody></table>
 <h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">({</span>
