@@ -328,7 +328,7 @@
                     <a href="#game-end" class="toc-h2 toc-link" data-title="Game End">Game End</a>
                   </li>
                   <li>
-                    <a href="#ongameexpiry" class="toc-h2 toc-link" data-title="onGameExpiry">onGameExpiry</a>
+                    <a href="#game-expiry" class="toc-h2 toc-link" data-title="Game Expiry">Game Expiry</a>
                   </li>
                   <li>
                     <a href="#back-button-press" class="toc-h2 toc-link" data-title="Back Button Press">Back Button Press</a>
@@ -401,7 +401,7 @@
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Starts a game by creating a room according to the specified parameters.</p>
+<p>Starts a game by creating a <a href="#room">room</a> according to the specified parameters.</p>
 
 <table><thead>
 <tr>
@@ -432,7 +432,7 @@
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Displays the native overlay to select and add a player to the active room. Will return the updated <code>Room</code> in the success callback.</p>
+<p>Displays the native overlay to select and add a player to the active room. Will return the updated <a href="#room">room</a> in the success callback.</p>
 <h2 id='rematch'>Rematch</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">rematch</span><span class="p">({</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Rematch room created"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
@@ -443,10 +443,10 @@
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Creates a new <code>Room</code> with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single <code>Room</code> is created for all of them.</p>
+<p>Creates a new <a href="#room">room</a> with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single <a href="#room">room</a> is created for all of them.</p>
 <h2 id='end-game'>End Game</h2>
 <aside class="notice">
-Only solo games can be ended from the client. To end a multiplayer game, the `endGame` API needs to be triggered from the server.
+Only solo games can be ended from the client. To end a multiplayer game, the `kapow.game.end` API needs to be triggered from the server.
 </aside>
 <pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">end</span><span class="p">({</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
@@ -465,7 +465,8 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Displays a pop up that shows the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.</p>
+<p>Displays a pop up that shows the list of active rooms, ones where the game hasn&#39;t ended yet, that the user is a part of.
+Selecting one of these rooms, will trigger the <a href="#load">load</a> event.</p>
 <h2 id='get-active-rooms'>Get Active Rooms</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getActiveRooms</span><span class="p">({</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">roomIndex</span> <span class="k">in</span> <span class="nx">rooms</span><span class="p">)</span> <span class="p">{</span>
@@ -489,7 +490,7 @@ Only solo games can be ended from the client. To end a multiplayer game, the `en
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Loads the context of a <code>Room</code> indicated by the <code>roomId</code> to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
+<p>Loads the context of a <a href="#room">room</a> indicated by the <code>roomId</code> to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
 For example: Call this when you want to take the user to the last room he was a part of (as fetched from <code>getActiveRooms</code>) on game load.</p>
 
 <table><thead>
@@ -513,21 +514,22 @@ For example: Call this when you want to take the user to the last room he was a 
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Unloads the context of a <code>Room</code> from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
+<p>Unloads the context of a <a href="#room">room</a> from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
 For example: Call this when the user clicks on <code>Start a new game</code> while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.</p>
 <h1 id='history'>History</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">history</span><span class="p">.</span><span class="nx">fetch</span><span class="p">({</span>
-  <span class="na">messageId</span><span class="p">:</span> <span class="s1">'1517568717299-n8e-m202'</span><span class="p">,</span>
-  <span class="na">type</span><span class="p">:</span> <span class="s1">'before'</span>
-  <span class="na">numberOfMessages</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
-  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">messages</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Messages fetched from history"</span><span class="p">,</span> <span class="nx">messages</span><span class="p">);</span>
+  <span class="na">packetId</span><span class="p">:</span> <span class="s1">'1517568717299-n8e-m202'</span><span class="p">,</span>
+  <span class="na">roomId</span><span class="p">:</span> <span class="s1">'room@kapow.games'</span><span class="p">,</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'before'</span><span class="p">,</span> <span class="c1">// To fetch 20 messages exchanged in the room since `1517568717299-n8e-m202`</span>
+  <span class="na">count</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">packets</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Packets fetched from history"</span><span class="p">,</span> <span class="nx">packets</span><span class="p">);</span>
   <span class="p">},</span>
   <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<p>Used to fetch the moves that have been exchanged within a <code>Room</code> since the last time the game was open. The API returns a list of messages that have been exchanged in the group since the <code>message</code> denoted by <code>messageId</code> in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.</p>
+<p>Used to fetch the packets that have been exchanged within a <a href="#room">room</a> since the last time the game was open. The API returns a list of packets that have been exchanged in the group since the <a href="#packet">packet</a> denoted by <code>packetId</code> in the success callback. More packets can be fetched recursively.</p>
 
 <table><thead>
 <tr>
@@ -536,16 +538,32 @@ For example: Call this when the user clicks on <code>Start a new game</code> whi
 </tr>
 </thead><tbody>
 <tr>
-<td>messageId</td>
-<td>The id of the message before/after which you want to fetch messages. Skip this attribute to get the history from the beginning.</td>
+<td>packetId</td>
+<td>Identifier for the packet before/after which you want to fetch packets. Skip this attribute to get the history from the beginning.</td>
+</tr>
+<tr>
+<td>roomId</td>
+<td>Identifier for the room whose history is to be fetched.</td>
 </tr>
 <tr>
 <td>type</td>
 <td>Possible values: <code>before</code>/<code>after</code>.</td>
 </tr>
 <tr>
-<td>numberOfMessages</td>
-<td>Number of messages you want to retrieve (maximum of 25). Default value is <code>25</code>.</td>
+<td>count</td>
+<td>Number of packets you want to retrieve (maximum of 25). Default value is <code>25</code>.</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>Response Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>packets</td>
+<td>Array of <a href="#packet">packets</a> exchanged in the room.</td>
 </tr>
 </tbody></table>
 <h1 id='invoke-server-function'>Invoke Server Function</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">invoke</span><span class="p">({</span>
@@ -720,7 +738,7 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <span class="p">});</span>
 </code></pre>
 <p><code>roomStore</code> is used to store and retrieve data that is specific to a particular room.</p>
-<h1 id='information'>Information</h1><h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayerInfo</span><span class="p">({</span>
+<h1 id='information'>Information</h1><h2 id='get-player-information'>Get Player Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getPlayer</span><span class="p">({</span>
   <span class="na">playerId</span><span class="p">:</span> <span class="s1">'alice@kapow.games'</span><span class="p">,</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Player information"</span><span class="p">,</span> <span class="nx">player</span><span class="p">);</span>
@@ -730,16 +748,6 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
-<blockquote>
-<p>Sample Player Object:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">'alice@kapow.games'</span><span class="p">,</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="err">'Alice</span><span class="w"> </span><span class="err">Michael'</span><span class="p">,</span><span class="w">
-    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//kapow.games/alice.jpg'</span><span class="p">,</span><span class="w">
-    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="err">'invited'</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <p>Returns information regarding the player, denoted by <code>playerId</code>.</p>
 
 <table><thead>
@@ -753,10 +761,20 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <td>The identifier of the player whose information you want to retrieve.</td>
 </tr>
 </tbody></table>
-
+<h3 id='player'>Player</h3>
+<blockquote>
+<p>Sample Player Object:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@kapow.games"</span><span class="p">,</span><span class="w">
+  </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice Michael"</span><span class="p">,</span><span class="w">
+  </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kapow.games/alice.jpg"</span><span class="p">,</span><span class="w">
+  </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
 <table><thead>
 <tr>
-<th>Player Attribute</th>
+<th>Attribute</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -777,35 +795,35 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <td>The user&#39;s affiliation in the room. Possible values: <code>invited</code>/<code>accepted</code>/<code>left</code>/<code>rejected</code>/<code>unknown</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">({</span>
+<h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUser</span><span class="p">({</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"User information"</span><span class="p">,</span> <span class="nx">user</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
+<p>Returns information regarding the user whose device the game is running on.</p>
+<h3 id='user'>User</h3>
 <blockquote>
 <p>Sample User Object:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="err">player</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="err">'alice@kapow.games'</span><span class="p">,</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="err">'Alice</span><span class="w"> </span><span class="err">Michael'</span><span class="p">,</span><span class="w">
-    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="err">'https</span><span class="p">:</span><span class="err">//kapow.games/alice.jpg'</span><span class="p">,</span><span class="w">
-    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="err">'invited'</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@kapow.games"</span><span class="p">,</span><span class="w">
+    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice Michael"</span><span class="p">,</span><span class="w">
+    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kapow.games/alice.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Returns information regarding the user whose device the game is running on.</p>
-
 <table><thead>
 <tr>
-<th>User Attribute</th>
+<th>Attribute</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>player</td>
-<td>Player object corresponding to the user.</td>
+<td><a href="#player">Player</a> object corresponding to the user.</td>
 </tr>
 </tbody></table>
 <h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">({</span>
@@ -817,29 +835,52 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
   <span class="p">}</span>
 <span class="p">});</span>
 </code></pre>
+<p>Returns information regarding the room that&#39;s loaded in the WebView.
+If a <a href="#room">room</a> has not been created/loaded yet, you&#39;ll receive an error response.</p>
+<h3 id='room'>Room</h3>
 <blockquote>
 <p>Sample Room Object:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="err">roomId</span><span class="p">:</span><span class="w"> </span><span class="s2">"room_identifier"</span><span class="p">,</span><span class="w">
-  </span><span class="err">state</span><span class="p">:</span><span class="w"> </span><span class="s2">"locked"</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s2">"unlocked"</span><span class="p">,</span><span class="w">
-  </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"solo"</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s2">"friends"</span><span class="w"> </span><span class="err">/</span><span class="w"> </span><span class="s2">"random"</span><span class="w">
-  </span><span class="err">nextPlayerId</span><span class="p">:</span><span class="w"> </span><span class="s2">"nextPlayer@kapow.games"</span><span class="p">,</span><span class="w">
+  </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"room@kapow.games"</span><span class="p">,</span><span class="w">
+  </span><span class="err">type</span><span class="p">:</span><span class="w"> </span><span class="s2">"solo"</span><span class="p">,</span><span class="w">
+  </span><span class="err">nextPlayerId</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@kapow.games"</span><span class="p">,</span><span class="w">
   </span><span class="err">players</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Player 1"</span><span class="p">,</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"player_1@kapow.games"</span><span class="p">,</span><span class="w">
-    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/player_1.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@kapow.games"</span><span class="p">,</span><span class="w">
+    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/alice.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
   </span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Player 2"</span><span class="p">,</span><span class="w">
-    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"player_2@kapow.games"</span><span class="p">,</span><span class="w">
-    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/player_2.jpg"</span><span class="p">,</span><span class="w">
+    </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bob"</span><span class="p">,</span><span class="w">
+    </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"bob@kapow.games"</span><span class="p">,</span><span class="w">
+    </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/bob.jpg"</span><span class="p">,</span><span class="w">
     </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
   </span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Returns information regarding the room that&#39;s loaded in the WebView.
-If a <code>room</code> has not been created/loaded yet, you&#39;ll receive an error response.</p>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Identifier of the room.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Indicates the type of the room. Possible values are: <code>solo</code>/<code>friends</code>/<code>random</code>.</td>
+</tr>
+<tr>
+<td>nextPlayerId</td>
+<td>Identifier for the player whose turn it is next.</td>
+</tr>
+<tr>
+<td>players</td>
+<td>Array of <a href="#player">player</a> objects who are part of the room.</td>
+</tr>
+</tbody></table>
 <h1 id='social-sharing'>Social Sharing</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">social</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
   <span class="na">text</span><span class="p">:</span> <span class="s2">"Hello, world!"</span><span class="p">,</span>
   <span class="na">medium</span><span class="p">:</span> <span class="s2">"facebook"</span><span class="p">,</span>
@@ -926,6 +967,37 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">});</span>
 </code></pre>
 <p>Published when one of the players sends out data.</p>
+<h3 id='packet'>Packet</h3>
+<blockquote>
+<p>Sample packet</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">packetId</span><span class="p">:</span><span class="w"> </span><span class="s2">"1517568717299-n8e-m202"</span><span class="p">,</span><span class="w">
+  </span><span class="err">data</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="s2">"value"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">senderId</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@kapow.games"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>packetId</td>
+<td>Identifier for the packet.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>Data published with the packet.</td>
+</tr>
+<tr>
+<td>senderId</td>
+<td>Identifier of the player who published the packet.</td>
+</tr>
+</tbody></table>
 <h2 id='turn-change'>Turn Change</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'turn_change'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">kapow</span><span class="p">.</span><span class="nx">getUserInfo</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">user</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">player</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
@@ -958,7 +1030,7 @@ Your game&#39;s code should only start executing from this point. Treat this as 
 <span class="p">});</span>
 </code></pre>
 <p>Published when the server signals the end of a game.</p>
-<h2 id='ongameexpiry'>onGameExpiry</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'game_expire'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outcome</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='game-expiry'>Game Expiry</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">'game_expire'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">outcome</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">showGameExpiredScreen</span><span class="p">();</span>
 <span class="p">});</span>
 </code></pre>
