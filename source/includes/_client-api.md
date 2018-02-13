@@ -60,7 +60,7 @@ kapow.game.start({
   }
 });
 ```
-Starts a game by creating a room according to the specified parameters.
+Starts a game by creating a [room](#room) according to the specified parameters.
 
 Parameter | Description
 --------- | -----------
@@ -80,7 +80,7 @@ kapow.game.addPlayer({
   }
 });
 ```
-Displays the native overlay to select and add a player to the active room. Will return the updated `Room` in the success callback.
+Displays the native overlay to select and add a player to the active room. Will return the updated [room](#room) in the success callback.
 
 ## Rematch
 ```javascript
@@ -94,11 +94,11 @@ kapow.game.rematch({
   }
 });
 ```
-Creates a new `Room` with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single `Room` is created for all of them.
+Creates a new [room](#room) with the same set of players as there are in the existing one, and sends out an invitation to all of them, ensuring that even if all players in the room request for a rematch simultaneously, only a single [room](#room) is created for all of them.
 
 ## End Game
 <aside class="notice">
-Only solo games can be ended from the client. To end a multiplayer game, the `endGame` API needs to be triggered from the server.
+Only solo games can be ended from the client. To end a multiplayer game, the `kapow.game.end` API needs to be triggered from the server.
 </aside>
 ```javascript
 kapow.game.end({
@@ -124,6 +124,7 @@ kapow.displayActiveRooms({
 });
 ```
 Displays a pop up that shows the list of active rooms, ones where the game hasn't ended yet, that the user is a part of.
+Selecting one of these rooms, will trigger the [load](#load) event.
 
 ## Get Active Rooms
 ```javascript
@@ -153,7 +154,7 @@ kapow.loadRoom({
   }
 });
 ```
-Loads the context of a `Room` indicated by the `roomId` to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
+Loads the context of a [room](#room) indicated by the `roomId` to the WebView, granting access to all room specific APIs and attaching all related lifecycle callbacks.
 For example: Call this when you want to take the user to the last room he was a part of (as fetched from `getActiveRooms`) on game load.
 
 Parameter | Description
@@ -172,15 +173,16 @@ kapow.unloadRoom({
   }
 });
 ```
-Unloads the context of a `Room` from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
+Unloads the context of a [room](#room) from the WebView, removing access to all room specific APIs and detaching all related lifecycle callbacks.
 For example: Call this when the user clicks on `Start a new game` while waiting to get matched with a random opponent/shares an invite link and no one has joined yet.
 
 # History
 ```javascript
 kapow.history.fetch({
   packetId: '1517568717299-n8e-m202',
-  type: 'before'
-  numberOfPackets: 20,
+  roomId: 'room@kapow.games',
+  type: 'before', // To fetch 20 messages exchanged in the room since `1517568717299-n8e-m202`
+  count: 20,
   onSuccess: function(packets) {
     console.log("Packets fetched from history", packets);
   },
@@ -189,13 +191,18 @@ kapow.history.fetch({
   }
 });
 ```
-Used to fetch the packets that have been exchanged within a `Room` since the last time the game was open. The API returns a list of packets that have been exchanged in the group since the packet denoted by `packetId` in the success callback. More packets can be fetched recursively.
+Used to fetch the packets that have been exchanged within a [room](#room) since the last time the game was open. The API returns a list of packets that have been exchanged in the group since the [packet](#packet) denoted by `packetId` in the success callback. More packets can be fetched recursively.
 
 Parameter | Description
 --------- | -----------
-packetId | The id of the packet before/after which you want to fetch packets. Skip this attribute to get the history from the beginning.
+packetId | Identifier for the packet before/after which you want to fetch packets. Skip this attribute to get the history from the beginning.
+roomId | Identifier for the room whose history is to be fetched.
 type | Possible values: `before`/`after`.
-numberOfPackets | Number of packets you want to retrieve (maximum of 25). Default value is `25`.
+count | Number of packets you want to retrieve (maximum of 25). Default value is `25`.
+
+Response Parameter | Description
+------------------ | -----------
+packets | Array of [packets](#packet) exchanged in the room.
 
 # Invoke Server Function
 ```javascript
@@ -348,7 +355,7 @@ kapow.roomStore.get({
 
 ## Get Player Information
 ```javascript
-kapow.getPlayerInfo({
+kapow.getPlayer({
   playerId: 'alice@kapow.games',
   onSuccess: function(player) {
     console.log("Player information", player);
@@ -358,25 +365,25 @@ kapow.getPlayerInfo({
   }
 });
 ```
-> Sample Player Object:
-
-```json
-{
-    id: 'alice@kapow.games',
-    name: 'Alice Michael',
-    profileImage: 'https://kapow.games/alice.jpg',
-    affiliation: 'invited'
-}
-```
-
 Returns information regarding the player, denoted by `playerId`.
 
 Parameter | Description
 --------- | -----------
 playerId | The identifier of the player whose information you want to retrieve.
 
+### Player
+> Sample Player Object:
 
-Player Attribute | Description
+```json
+{
+  id: "alice@kapow.games",
+  name: "Alice Michael",
+  profileImage: "https://kapow.games/alice.jpg",
+  affiliation: "invited"
+}
+```
+
+Attribute | Description
 ---------------- | -----------
 id | Identifier of the player whose information was retrieved.
 name | Full name of the player.
@@ -386,29 +393,31 @@ affiliation | The user's affiliation in the room. Possible values: `invited`/`ac
 
 ## Get User Information
 ```javascript
-kapow.getUserInfo({
+kapow.getUser({
   onSuccess: function(user) {
     console.log("User information", user);
   }
 });
 ```
+Returns information regarding the user whose device the game is running on.
+
+### User
 > Sample User Object:
 
 ```json
 {
   player: {
-    id: 'alice@kapow.games',
-    name: 'Alice Michael',
-    profileImage: 'https://kapow.games/alice.jpg',
-    affiliation: 'invited'
+    id: "alice@kapow.games",
+    name: "Alice Michael",
+    profileImage: "https://kapow.games/alice.jpg",
+    affiliation: "invited"
   }
 }
 ```
-Returns information regarding the user whose device the game is running on.
 
-User Attribute | Description
+Attribute | Description
 ---------------- | -----------
-player | Player object corresponding to the user.
+player | [Player](#player) object corresponding to the user.
 
 ## Get Room Information
 ```javascript
@@ -421,30 +430,37 @@ kapow.getRoomInfo({
   }
 });
 ```
+Returns information regarding the room that's loaded in the WebView.
+If a [room](#room) has not been created/loaded yet, you'll receive an error response.
+
+### Room
 > Sample Room Object:
 
 ```json
 {
-  roomId: "room_identifier",
-  state: "locked" / "unlocked",
-  type: "solo" / "friends" / "random"
-  nextPlayerId: "nextPlayer@kapow.games",
+  id: "room@kapow.games",
+  type: "solo",
+  nextPlayerId: "bob@kapow.games",
   players: [{
-    name: "Player 1",
-    id: "player_1@kapow.games",
-    profileImage: "https://example.com/player_1.jpg",
+    name: "Alice",
+    id: "alice@kapow.games",
+    profileImage: "https://example.com/alice.jpg",
     affiliation: "accepted"
   }, {
-    name: "Player 2",
-    id: "player_2@kapow.games",
-    profileImage: "https://example.com/player_2.jpg",
+    name: "Bob",
+    id: "bob@kapow.games",
+    profileImage: "https://example.com/bob.jpg",
     affiliation: "accepted"
   }]
 }
 ```
 
-Returns information regarding the room that's loaded in the WebView.
-If a `room` has not been created/loaded yet, you'll receive an error response.
+Attribute | Description
+---------------- | -----------
+id | Identifier of the room.
+type | Indicates the type of the room. Possible values are: `solo`/`friends`/`random`.
+nextPlayerId | Identifier for the player whose turn it is next.
+players | Array of [player](#player) objects who are part of the room.
 
 # Social Sharing
 ```javascript

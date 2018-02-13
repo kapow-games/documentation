@@ -38,18 +38,25 @@ kapow.on('data', function(packet) {
   updateGameState(move);
 });
 ```
-> Sample packet:
+Published when one of the players sends out data.
+### Packet
+> Sample packet
 
 ```json
 {
-    packetId: "1518501780",
-    data: {
-      key: "value"
-    },
-    senderId: "alice@kapow.games"
+  packetId: "1517568717299-n8e-m202",
+  data: {
+    key: "value"
+  },
+  senderId: "alice@kapow.games"
 }
 ```
-Published when one of the players sends out data.
+
+Parameter | Description
+--------- | -----------
+packetId | Identifier for the packet.
+data | Data published with the packet.
+senderId | Identifier of the player who published the packet.
 
 ## Turn Change
 ```javascript
@@ -92,7 +99,7 @@ kapow.on('game_end', function(outcome) {
 ```
 Published when the server signals the end of a game.
 
-## onGameExpiry
+## Game Expiry
 ```javascript
 kapow.on('game_expire', function(outcome) {
   showGameExpiredScreen();
@@ -113,4 +120,3 @@ kapow.on('back_button_press', function() {
 ```
 Published when the user presses the back-button. 
 Return `true` if you are handling this particular event on your own. If not, Kapow will close the web-view.
-
