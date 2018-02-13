@@ -1,38 +1,44 @@
-# Lifecycle events
-<aside class="notice">
-Each of these functions is to be defined inside the scope of a globally accessible `game` object.
-</aside>
+# Events
 
-## onPlayerJoined
+## Player Join
 ```javascript
-game.onPlayerJoined = function(player) {
-  doStuffOnPlayerJoin(player);
-}
+kapow.on('player_join', function(player) {
+  var room = kapow.getRoom();
+  var countOfAcceptedPlayers = 0;
+  room.players.forEach(function(player) {
+    if (player.affiliation == "accepted") {
+      countOfAcceptedPlayers++;
+    }
+  });
+  if (countOfAcceptedPlayers == EXPECTED_COUNT_OF_PLAYERS) {
+    startGame(room);
+  }
+});
 ```
-Called when a new/invited player joins/accepts an invitation to the room.
+Published when a new/invited player joins/accepts an invitation to the room.
 
-## onPlayerLeft
+## Player Leave
 ```javascript
-game.onPlayerLeft = function(player) {
-  doStuffOnPlayerLeave(player);
-}
+kapow.on('player_leave', function(player) {
+  var room = kapow.getRoom();
+  var countOfAcceptedPlayers = 0;
+  room.players.forEach(function(player) {
+    if (player.affiliation == "accepted") {
+      countOfAcceptedPlayers++;
+    }
+  });
+  if (countOfAcceptedPlayers != EXPECTED_COUNT_OF_PLAYERS) {
+    endGame(room);
+  }
+});
 ```
 Called when an existing player leaves.
 
-## onInviteRejected
+## Invite Reject
 ```javascript
-game.onInviteRejected = function(player) {
-  doStuffOnInviteRejected(player);
-}
+kapow.on('invite_reject', function(player) {
+  var room = kapow.getRoom();
+  doStuffOnInviteRejected(player, room);
+});
 ```
 Called when an invited player rejects the invite.
-
-# Storage
-On demand, we'll provision a DynamoDB table or a MySQL database for you that can be used for storing and retrieving data.
-
-# Libraries
-These third-party libraries are at your disposal:
-* [request](https://github.com/request/request)
-* [sql](https://github.com/mysqljs/mysql)
-
-You can include them with a `require('mysql')` command.
