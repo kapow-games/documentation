@@ -38,6 +38,17 @@ kapow.on('data', function(packet) {
   updateGameState(move);
 });
 ```
+> Sample packet:
+
+```json
+{
+    packetId: "1518501780",
+    data: {
+      key: "value"
+    },
+    senderId: "alice@kapow.games"
+}
+```
 Published when one of the players sends out data.
 
 ## Turn Change

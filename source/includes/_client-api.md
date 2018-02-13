@@ -178,24 +178,24 @@ For example: Call this when the user clicks on `Start a new game` while waiting 
 # History
 ```javascript
 kapow.history.fetch({
-  messageId: '1517568717299-n8e-m202',
+  packetId: '1517568717299-n8e-m202',
   type: 'before'
-  numberOfMessages: 20,
-  onSuccess: function(messages) {
-    console.log("Messages fetched from history", messages);
+  numberOfPackets: 20,
+  onSuccess: function(packets) {
+    console.log("Packets fetched from history", packets);
   },
   onFailure: function(error) {
     console.error(error);
   }
 });
 ```
-Used to fetch the moves that have been exchanged within a `Room` since the last time the game was open. The API returns a list of messages that have been exchanged in the group since the `message` denoted by `messageId` in the success callback. This can be of multiple types as mentioned in the documentation. More messages can be fetched recursively.
+Used to fetch the packets that have been exchanged within a `Room` since the last time the game was open. The API returns a list of packets that have been exchanged in the group since the packet denoted by `packetId` in the success callback. More packets can be fetched recursively.
 
 Parameter | Description
 --------- | -----------
-messageId | The id of the message before/after which you want to fetch messages. Skip this attribute to get the history from the beginning.
+packetId | The id of the packet before/after which you want to fetch packets. Skip this attribute to get the history from the beginning.
 type | Possible values: `before`/`after`.
-numberOfMessages | Number of messages you want to retrieve (maximum of 25). Default value is `25`.
+numberOfPackets | Number of packets you want to retrieve (maximum of 25). Default value is `25`.
 
 # Invoke Server Function
 ```javascript
