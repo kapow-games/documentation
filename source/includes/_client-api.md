@@ -264,14 +264,14 @@ Invokes the specified method within your server JavaScript file and passes the v
 
 Parameter | Description
 --------- | -----------
-functionName | The name of the function on the server that you want to invoke.
+functionName | Name of the function on the server that you want to invoke.
 parameters | JSON object you want to pass to the function as parameter during invocation.
 invokeLazily | Set to `true` if you don't want to block on this network call and instead want the method to be invoked as and when the user has network connectivity. Default value is `false`.
 
 Response Attribute | Description
 ------------------ | -----------
 status | Indicates whether the request was `executed` or just `scheduled` (in case of lazily-invoked RPCs).
-result | The response returned from the server.
+result | Response returned from the server.
 error | Error message returned from the server.
 
 <aside class="notice">
@@ -291,8 +291,8 @@ Sends out an analytics event to Kapow servers. In future, there'll be a section 
 
 Parameter | Description
 --------- | -----------
-eventName | The name of the event to be sent.
-attributes | A JSON map of extra attributes `{'key':'value'}` that is to be sent along with the event.
+eventName | Name of the event to be sent.
+attributes | JSON map of extra attributes `{'key':'value'}` that is to be sent along with the event.
 
 # Stores
 Use these stores instead of `localStorage` for consistent storage behavior across devices and operating systems.
@@ -369,7 +369,7 @@ Returns information regarding the player, denoted by `playerId`.
 
 Parameter | Description
 --------- | -----------
-playerId | The identifier of the player whose information you want to retrieve.
+playerId | Identifier of the player whose information you want to retrieve.
 
 ### Player
 > Sample Player Object:
@@ -377,18 +377,22 @@ playerId | The identifier of the player whose information you want to retrieve.
 ```json
 {
   id: "alice@kapow.games",
-  name: "Alice Michael",
+  firstName: "Alice",
+  lastName: "Michael",
   profileImage: "https://kapow.games/alice.jpg",
-  affiliation: "invited"
+  affiliation: "invited",
+  country: "IN"
 }
 ```
 
 Attribute | Description
 ---------------- | -----------
 id | Identifier of the player whose information was retrieved.
-name | Full name of the player.
+firstName | First name of the player.
+lastName | Last name of the player.
 profileImage | URL to the user's profile image.
-affiliation | The user's affiliation in the room. Possible values: `invited`/`accepted`/`left`/`rejected`/`unknown`.
+affiliation | User's affiliation in the room. Possible values: `invited`/`accepted`/`left`/`rejected`/`unknown`.
+country | ISO Alpha 2 code of the country that the user belongs to.
 
 
 ## Get User Information
@@ -421,7 +425,7 @@ player | [Player](#player) object corresponding to the user.
 
 ## Get Room Information
 ```javascript
-kapow.getRoomInfo({
+kapow.getRoom({
   onSuccess: function(room) {
     console.log("Room information", room);
   },
@@ -480,8 +484,8 @@ Shares the `text` on the specified `medium`.
 
 Parameter | Description
 --------- | -----------
-text | The text to be shared.
-medium | The medium on which you want to share the post. Either of `facebook`/`twitter`. Skip this attribute if you want Kapow to pop up the generic share dialog.
+text | Text to be shared.
+medium | Medium on which you want to share the post. Either of `facebook`/`twitter`. Skip this attribute if you want Kapow to pop up the generic share dialog.
 
 # Scoreboard Display
 ```javascript
@@ -498,8 +502,8 @@ Displays the scoreboard for the specified `metric` and `interval`.
 
 Parameter | Description
 --------- | -----------
-metric | The configured metric whose stats are to be displayed.
-interval | The time interval for which the stats are to be displayed. Possible values are: `daily`/`weekly`/`monthly`/`alltime`.
+metric | Configured metric whose stats are to be displayed.
+interval | Time interval for which the stats are to be displayed. Possible values are: `daily`/`weekly`/`monthly`/`alltime`.
 
 # WebView Management
 
