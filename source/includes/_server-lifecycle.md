@@ -1,4 +1,5 @@
 # Events
+You can attach handlers to the following lifecycle events.
 
 ## Player Join
 ```javascript
