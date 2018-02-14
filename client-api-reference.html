@@ -629,7 +629,7 @@ For example: Call this when the user clicks on <code>Start a new game</code> whi
 </thead><tbody>
 <tr>
 <td>functionName</td>
-<td>The name of the function on the server that you want to invoke.</td>
+<td>Name of the function on the server that you want to invoke.</td>
 </tr>
 <tr>
 <td>parameters</td>
@@ -653,7 +653,7 @@ For example: Call this when the user clicks on <code>Start a new game</code> whi
 </tr>
 <tr>
 <td>result</td>
-<td>The response returned from the server.</td>
+<td>Response returned from the server.</td>
 </tr>
 <tr>
 <td>error</td>
@@ -681,11 +681,11 @@ The method on the server side that is to be invoked must be part of a globally a
 </thead><tbody>
 <tr>
 <td>eventName</td>
-<td>The name of the event to be sent.</td>
+<td>Name of the event to be sent.</td>
 </tr>
 <tr>
 <td>attributes</td>
-<td>A JSON map of extra attributes <code>{&#39;key&#39;:&#39;value&#39;}</code> that is to be sent along with the event.</td>
+<td>JSON map of extra attributes <code>{&#39;key&#39;:&#39;value&#39;}</code> that is to be sent along with the event.</td>
 </tr>
 </tbody></table>
 <h1 id='stores'>Stores</h1>
@@ -758,7 +758,7 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </thead><tbody>
 <tr>
 <td>playerId</td>
-<td>The identifier of the player whose information you want to retrieve.</td>
+<td>Identifier of the player whose information you want to retrieve.</td>
 </tr>
 </tbody></table>
 <h3 id='player'>Player</h3>
@@ -767,9 +767,11 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="err">id</span><span class="p">:</span><span class="w"> </span><span class="s2">"alice@kapow.games"</span><span class="p">,</span><span class="w">
-  </span><span class="err">name</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice Michael"</span><span class="p">,</span><span class="w">
+  </span><span class="err">firstName</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alice"</span><span class="p">,</span><span class="w">
+  </span><span class="err">lastName</span><span class="p">:</span><span class="w"> </span><span class="s2">"Michael"</span><span class="p">,</span><span class="w">
   </span><span class="err">profileImage</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://kapow.games/alice.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="w">
+  </span><span class="err">affiliation</span><span class="p">:</span><span class="w"> </span><span class="s2">"invited"</span><span class="p">,</span><span class="w">
+  </span><span class="err">country</span><span class="p">:</span><span class="w"> </span><span class="s2">"IN"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <table><thead>
@@ -783,8 +785,12 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <td>Identifier of the player whose information was retrieved.</td>
 </tr>
 <tr>
-<td>name</td>
-<td>Full name of the player.</td>
+<td>firstName</td>
+<td>First name of the player.</td>
+</tr>
+<tr>
+<td>lastName</td>
+<td>Last name of the player.</td>
 </tr>
 <tr>
 <td>profileImage</td>
@@ -792,7 +798,11 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 </tr>
 <tr>
 <td>affiliation</td>
-<td>The user&#39;s affiliation in the room. Possible values: <code>invited</code>/<code>accepted</code>/<code>left</code>/<code>rejected</code>/<code>unknown</code>.</td>
+<td>User&#39;s affiliation in the room. Possible values: <code>invited</code>/<code>accepted</code>/<code>left</code>/<code>rejected</code>/<code>unknown</code>.</td>
+</tr>
+<tr>
+<td>country</td>
+<td>ISO Alpha 2 code of the country that the user belongs to.</td>
 </tr>
 </tbody></table>
 <h2 id='get-user-information'>Get User Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getUser</span><span class="p">({</span>
@@ -826,7 +836,7 @@ If the `key` is missing in store, the success callback is invoked with a `null` 
 <td><a href="#player">Player</a> object corresponding to the user.</td>
 </tr>
 </tbody></table>
-<h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoomInfo</span><span class="p">({</span>
+<h2 id='get-room-information'>Get Room Information</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">({</span>
   <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">room</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Room information"</span><span class="p">,</span> <span class="nx">room</span><span class="p">);</span>
   <span class="p">},</span>
@@ -902,11 +912,11 @@ If a <a href="#room">room</a> has not been created/loaded yet, you&#39;ll receiv
 </thead><tbody>
 <tr>
 <td>text</td>
-<td>The text to be shared.</td>
+<td>Text to be shared.</td>
 </tr>
 <tr>
 <td>medium</td>
-<td>The medium on which you want to share the post. Either of <code>facebook</code>/<code>twitter</code>. Skip this attribute if you want Kapow to pop up the generic share dialog.</td>
+<td>Medium on which you want to share the post. Either of <code>facebook</code>/<code>twitter</code>. Skip this attribute if you want Kapow to pop up the generic share dialog.</td>
 </tr>
 </tbody></table>
 <h1 id='scoreboard-display'>Scoreboard Display</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">displayScoreboard</span><span class="p">({</span>
@@ -927,11 +937,11 @@ If a <a href="#room">room</a> has not been created/loaded yet, you&#39;ll receiv
 </thead><tbody>
 <tr>
 <td>metric</td>
-<td>The configured metric whose stats are to be displayed.</td>
+<td>Configured metric whose stats are to be displayed.</td>
 </tr>
 <tr>
 <td>interval</td>
-<td>The time interval for which the stats are to be displayed. Possible values are: <code>daily</code>/<code>weekly</code>/<code>monthly</code>/<code>alltime</code>.</td>
+<td>Time interval for which the stats are to be displayed. Possible values are: <code>daily</code>/<code>weekly</code>/<code>monthly</code>/<code>alltime</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='webview-management'>WebView Management</h1><h2 id='close-webview'>Close WebView</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">kapow</span><span class="p">.</span><span class="nx">close</span><span class="p">();</span>
