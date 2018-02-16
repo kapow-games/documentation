@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Kapow Documentation</title>
+    <title>Client API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -201,7 +201,7 @@
       <script src="javascripts/all_nosearch.js"></script>
   </head>
 
-  <body class="index" data-languages="[]">
+  <body class="debugging" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -221,44 +221,75 @@
         </ul>
       <div id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#debugging" class="toc-h1 toc-link" data-title="Debugging">Debugging</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#benefits" class="toc-h2 toc-link" data-title="Benefits">Benefits</a>
+                    <a href="#setup-device-emulator" class="toc-h2 toc-link" data-title="Setup Device / Emulator">Setup Device / Emulator</a>
+                  </li>
+                  <li>
+                    <a href="#install-kapow-beta" class="toc-h2 toc-link" data-title="Install Kapow beta">Install Kapow beta</a>
+                  </li>
+                  <li>
+                    <a href="#register-a-game-with-kapow" class="toc-h2 toc-link" data-title="Register a game with Kapow">Register a game with Kapow</a>
+                  </li>
+                  <li>
+                    <a href="#add-yourself-as-a-beta-tester" class="toc-h2 toc-link" data-title="Add yourself as a beta tester">Add yourself as a beta tester</a>
+                  </li>
+                  <li>
+                    <a href="#testing" class="toc-h2 toc-link" data-title="Testing">Testing</a>
                   </li>
               </ul>
-          </li>
-          <li>
-            <a href="#get-started" class="toc-h1 toc-link" data-title="Get Started">Get Started</a>
           </li>
       </div>
     </div>
     <div class="page-wrapper">
         <div class="full_content">
-          <h1 id='introduction'>Introduction</h1>
-<p>The Kapow iOS and Android mobile apps allow users to play games with their friends. There can be multiple game sessions (of the same, or of different games) active at any time. Each game session can have two or more users, including observers. The users can communicate with each other with an in-app chat as they are playing (WiP). Games can generate and send rich notifications to users.</p>
+          <h1 id='debugging'>Debugging</h1><h2 id='setup-device-emulator'>Setup Device / Emulator</h2>
+<ul>
+<li>Make sure you have an Android device with android version &gt; 4.2</li>
+<li>Make sure you have chrome installed: <a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a></li>
+<li>Enable developer mode on your device: <a href="http://www.androidauthority.com/enable-developer-options-569223/">http://www.androidauthority.com/enable-developer-options-569223/</a></li>
+<li>Turn on the USB debugging option under Developer Options</li>
+<li>Useful links: 
 
-<p>Kapow games are HTML 5 games. The game developer does not have to adopt any new technology. The Kapow platform ensures that games run on a modern WebKit incarnation (think Safari and Chrome), so the game developer does not have to worry about compatibility with an unknown set of browsers.</p>
+<ul>
+<li>Genymotion (Android emulator): <a href="https://www.genymotion.com/fun-zone/">https://www.genymotion.com/fun-zone/</a></li>
+</ul></li>
+</ul>
+<h2 id='install-kapow-beta'>Install Kapow beta</h2>
+<ul>
+<li>Link : <a href="https://betas.to/qqmYhdCH">https://betas.to/qqmYhdCH</a></li>
+<li>Sign in to the app
 
-<p>The Kapow SDK provides JavaScript APIs tailored for writing games.</p>
-<h2 id='benefits'>Benefits</h2><h3 id='high-level'>High Level</h3>
-<p>The API primitives - &quot;Room&quot;, &quot;Player&quot;, &quot;Packet&quot; - are all designed to be at level of abstraction where the custom game logic code can directly work with them.</p>
-<h3 id='network'>Network</h3>
-<p>The SDK transparently handles peer endpoint discovery, network connectivity changes, and the actual network connections. Kapow servers buffer data to ensure that it gets delivered to players who are currently offline.</p>
-<h3 id='cheat-proof'>Cheat Proof</h3>
-<p>The SDK enforces an architecture based on an untrusted client model. This ensures that no player can cheat by gaining an information advantage, even if they run a modified copy of the Kapow app.</p>
-<h3 id='hosting'>Hosting</h3>
-<p>Kapow takes care of hosting the game, and intelligently caching it on the user&#39;s device for responsiveness.</p>
-<h3 id='leaderboards-replays-in-game-chat-tournaments-iap'>Leaderboards, Replays, In-game chat, Tournaments, IAP, ...</h3>
-<p>The Kapow app provides all the essentials that gamers have come to expect from good games, without requiring the game developer to write any custom code.</p>
-
-<p>Unlike general purpose app stores which use coarse-grained statistics like the number of downloads, Kapow uses gaming related metrics for ranking games when listing them for the user. These rankings are personalized for each user based on her play history. Kapow&#39;s content recommendation engine can use the genre specific metadata for each game. All these result in improved game discovery for the user and improved discoverability for game developers.</p>
-
-<p>To summarize, Kapow lets game developers focus on the game content by taking care of the infrastructure tasks, and provide them with a platform where they can grow viral simply by the virtue of their content.</p>
-<h1 id='get-started'>Get Started</h1>
-<p>To get started, familiarize yourself with the <a href="dashboard.html">Developer Dashboard</a> and check out our <a href="client-api-reference.html">client side</a> and <a href="server-api-reference.html">server side</a> documentation.</p>
-
-<p>For any kind of support, feel free to reach out to dev@kapow.games.</p>
+<ul>
+<li>Launch the app and complete the Facebook login</li>
+</ul></li>
+</ul>
+<h2 id='register-a-game-with-kapow'>Register a game with Kapow</h2>
+<ul>
+<li>Head over to <a href="https://dev.kapow.games">https://dev.kapow.games</a></li>
+<li>Check out the documentation for <a href="dashboard.html">Developer Dashboard</a> for help</li>
+</ul>
+<h2 id='add-yourself-as-a-beta-tester'>Add yourself as a beta tester</h2>
+<ul>
+<li>Go to the game you have just created </li>
+<li>Switch to the Distribution tab</li>
+<li>Register the number you have signed up on the Kapow app with as a tester</li>
+<li>Similarly add the accounts you want to test the game with (useful for multiplayer games)</li>
+</ul>
+<h2 id='testing'>Testing</h2>
+<ul>
+<li>Launch the app and switch to the All (games) tab</li>
+<li>You should see your game in this list</li>
+<li>Select your game and connect your device to the computer</li>
+<li>Open chrome and in the address bar type: <a href="chrome://inspect/#devices"><code>chrome://inspect/#devices</code></a></li>
+<li>You should see the device you have just connected or your emulator</li>
+<li>In case you don’t, make sure you have USB debugging enabled</li>
+<li>You should see a row titled <code>&lt;Your Game Name&gt; &lt;Your game link&gt;</code></li>
+<li>Click on inspect below the title to open the debugging window</li>
+<li>Switch to console tab where you can debug your game by logging on the console</li>
+<li>Additionally you can also view the screen by toggling screencast (This is usually enabled by default)</li>
+</ul>
 
         </div>
     </div>
