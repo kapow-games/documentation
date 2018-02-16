@@ -1,8 +1,6 @@
 ---
 title: Kapow Documentation
 
-search: true
-
 toc_footers:
   - <a href='./index.html'>Introduction</a>
   - <a href='./dashboard.html'>Developer Dashboard</a>
@@ -15,18 +13,27 @@ toc_footers:
 
 You can sign up on the [Kapow Developer Dashboard](https://dev.kapow.games) with your official email address (ideally one that is accessible to your engineering and product leads). 
 
-On the developer dashboard, you have the option of either uploading the game as a zip file, or providing the URL from where the game will be fetched each time.
+A Kapow game undergoes three stages:
+### Beta
+During development, developers can specify a URL where the game is hosted. This can be the IP address of any machine where a web server is running. Each time the game is loaded within the Kapow app, it will display the latest state of the code that is served by the web server.
+A beta game is visible only to those users who you've whitelisted as beta-testers within the [distribution](#distribution) section.
 
-During development, your developers can specify a URL where they have hosted your game. This can be set to the IP address of the developer's machine, and your developers can start a local web server to serve the code that they are currently working on. Then, each time they start the game inside the mobile app, it will display the latest code that is served by the web server on the developer's machine.
+### Review
+Once you want the Kapow Team to review your game, you can submit a build for review by uploading a zip-file that contains the client-side code for the game. The game then becomes visible to the entire Kapow team. To submit update review builds, you can make the changes in your `Beta` game and submit another build for Review.
 
-Games that are leveraging Kapow's [server side APIs](https://github.com/kapow-games/docs/wiki/Server-API-Reference) will also need to provide a publicly accessible link to their `server.js` file that contains code that can be invoked remotely. Kapow does not poll this file for updates, so you will have to manually click on 'Save Changes' each time there's an update you'd like to reflect on the server side.
+### Released
+Once the Kapow Team has cleared the build for release, they'll push the review build to a `release` state, post which every Kapow user will be able to access your game.
+As a result of this, the review game will disappear from your list of games on the dashboard.
 
-## Configuration
-### Game URL
-URL to the location where the game is hosted. Eg: `https://example.com/game/index.html`.
+# Configuration
+### Game URL/Game ZIP
+URL to the location where the game is hosted. Eg: `https://example.com/game/index.html` or the zip file that contains the client-side code for the game. The zip file should be structure such that on un-zipping, a new folder is created that contains the entire code for the game.
+<aside class="notice">
+Please make sure that the server-side code is not a part of this zip file.
+</aside>
 
-### Server URL
-URL to the location of your server side JavaScript file. Eg: `https://example.com/game/server/server.js`.
+### server.js
+The file that contains your server side code.
 
 ### Number of Players
 When a player chooses to play against random opponents, Kapow will lock the room if auto-room-locking is enabled once these many players have joined the room. The game does have the option to unlock the room post this.
@@ -42,10 +49,7 @@ Please note that only email addresses of users who have registered on the Kapow 
 </aside>
 
 ## Boards
-If your game contains scoreboards, you can configure them here. For more information, check out the FAQ page.
+If your game contains scoreboards, you can configure them here. For more information, check out the [FAQ section](./faq.html).
 
 ## Server Logs
 Logs emitted by your server script will be displayed here.
-
-## Client Logs
-Logs emitted by your client script will be displayed here.
