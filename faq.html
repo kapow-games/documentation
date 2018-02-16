@@ -1,0 +1,504 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Kapow Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all_nosearch.js"></script>
+  </head>
+
+  <body class="faq" data-languages="[&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo.svg" class="logo" alt="Logo" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+      
+        <ul class="toc-footer">
+            <li><a href='./index.html'>Introduction</a></li>
+            <li><a href='./dashboard.html'>Developer Dashboard</a></li>
+            <li><a href='./client-api-reference.html'>Client API Reference</a></li>
+            <li><a href='./server-api-reference.html'>Server API Reference</a></li>
+        </ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#progress-dialogs" class="toc-h1 toc-link" data-title="Progress Dialogs">Progress Dialogs</a>
+          </li>
+          <li>
+            <a href="#restoring-game-state" class="toc-h1 toc-link" data-title="Restoring Game State">Restoring Game State</a>
+          </li>
+          <li>
+            <a href="#nudges-amp-turn-expiry" class="toc-h1 toc-link" data-title="Nudges &amp; Turn-Expiry">Nudges &amp; Turn-Expiry</a>
+          </li>
+          <li>
+            <a href="#leaderboards" class="toc-h1 toc-link" data-title="Leaderboards">Leaderboards</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#step-1" class="toc-h2 toc-link" data-title="Step 1">Step 1</a>
+                  </li>
+                  <li>
+                    <a href="#step-2" class="toc-h2 toc-link" data-title="Step 2">Step 2</a>
+                  </li>
+                  <li>
+                    <a href="#step-3" class="toc-h2 toc-link" data-title="Step 3">Step 3</a>
+                  </li>
+                  <li>
+                    <a href="#step-4" class="toc-h2 toc-link" data-title="Step 4">Step 4</a>
+                  </li>
+              </ul>
+          </li>
+      </div>
+    </div>
+    <div class="page-wrapper">
+        <div class="dark-box"></div>
+        <div class="content">
+          <h1 id='progress-dialogs'>Progress Dialogs</h1><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">makeMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">move</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">showProgressDialog</span><span class="p">();</span>
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">invoke</span><span class="p">({</span>
+  <span class="na">functionName</span><span class="p">:</span> <span class="s1">'validateAndBroadcastMove'</span><span class="p">,</span>
+  <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">'move'</span><span class="p">:</span> <span class="nx">move</span>
+  <span class="p">},</span>
+  <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Result of invoking server side function: "</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">result</span><span class="p">);</span>
+    <span class="nx">hideProgressDialog</span><span class="p">();</span>
+    <span class="nx">updateMoveOnUi</span><span class="p">(</span><span class="nx">move</span><span class="p">);</span>
+  <span class="p">},</span>
+  <span class="na">onFailure</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while invoking server side function: "</span><span class="p">,</span> <span class="nx">response</span><span class="p">.</span><span class="nx">error</span><span class="p">);</span>
+    <span class="nx">hideProgressDialog</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">cause</span> <span class="o">==</span> <span class="s1">'network_timeout'</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">showRetryDialog</span><span class="p">();</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">showGenericErrorDialog</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<p>To give a good experience to the users while you are making a blocking RPC invocation, ensure that there&#39;s some form of progress state that&#39;s displayed to the user.</p>
+<h1 id='restoring-game-state'>Restoring Game State</h1>
+<p>Every time the <code>pause</code> event is triggered, you should dump the entire game state into the <code>roomStore</code>, and on <code>load</code>/<code>resume</code>, fetch this state from the <code>roomStore</code> and setup the interface appropriately. In addition to this, you should also call <code>kapow.history.fetch</code> with the last <code>packetId</code> you have seen.</p>
+<h1 id='nudges-amp-turn-expiry'>Nudges &amp; Turn-Expiry</h1>
+<blockquote>
+<p>Pseudo-code for implementing nudges:</p>
+</blockquote>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">broadcastMove</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValid</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">move</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+      <span class="na">error</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"cause"</span><span class="p">:</span> <span class="s2">"invalid_move"</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+    <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">game</span><span class="p">.</span><span class="nx">sendTurn</span><span class="p">({</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">move</span><span class="p">,</span>
+    <span class="na">roomId</span><span class="p">:</span> <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">().</span><span class="nx">id</span><span class="p">,</span>
+    <span class="na">senderId</span><span class="p">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">playerId</span><span class="p">,</span>
+    <span class="na">nextPlayerId</span><span class="p">:</span> <span class="nx">opponentId</span><span class="p">,</span>
+    <span class="na">successCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">scheduleNudge</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">opponentId</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">failureCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Something went wrong"</span><span class="p">,</span> <span class="nx">error</span><span class="p">);</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="na">error</span><span class="p">:</span> <span class="nx">e</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">scheduleNudge</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">opponentId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully sent data"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">storeTimestampAtWhichLastMoveWasPlayed</span><span class="p">(</span><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">().</span><span class="nx">id</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">playerId</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">);</span>
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">schedule</span><span class="p">({</span>
+    <span class="na">roomId</span><span class="p">:</span> <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">().</span><span class="nx">id</span><span class="p">,</span>
+    <span class="na">functionName</span><span class="p">:</span> <span class="s1">'notifyIfNecessary'</span><span class="p">,</span>
+    <span class="na">parameter</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">playerId</span><span class="p">:</span> <span class="nx">opponentId</span>
+    <span class="p">},</span>
+    <span class="na">delayInMinutes</span><span class="p">:</span> <span class="nx">ALLOWED_INACTIVITY_DURATION_IN_MINUTES</span><span class="p">,</span>
+    <span class="na">successCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully scheduled RPC"</span><span class="p">);</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="na">response</span><span class="p">:</span> <span class="s2">"success"</span>
+      <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="na">failureCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error while scheduling RPC"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="na">error</span><span class="p">:</span> <span class="nx">e</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">game</span><span class="p">.</span><span class="nx">notifyIfNecessary</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">db</span><span class="p">.</span><span class="nx">getTimestampAtWhichLastMoveWasPlayed</span><span class="p">(</span><span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">().</span><span class="nx">id</span><span class="p">,</span> <span class="nx">data</span><span class="p">.</span><span class="nx">playerId</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">timestamp</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">currentTimestamp</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">hasPlayerMovedInRoomSinceTimestamp</span> <span class="o">=</span> <span class="p">(</span><span class="nx">currentTimestamp</span> <span class="o">-</span> <span class="nx">timestamp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">ALLOWED_INACTIVITY_DURATION_IN_MILLIS</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">hasPlayerMovedInRoomSinceTimestamp</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">sendNudge</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">playerId</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">sendNudge</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">playerId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">notification</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">'title'</span><span class="p">:</span> <span class="s2">"Awesome Game"</span><span class="p">,</span>
+    <span class="s1">'text'</span><span class="p">:</span> <span class="s2">"Play your turn!"</span><span class="p">,</span>
+    <span class="s1">'buttons'</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="s1">'text'</span><span class="p">:</span> <span class="s1">'Play'</span><span class="p">,</span>
+      <span class="s1">'action'</span><span class="p">:</span> <span class="s1">'kapow://room/open?roomId='</span> <span class="o">+</span> <span class="nx">kapow</span><span class="p">.</span><span class="nx">getRoom</span><span class="p">().</span><span class="nx">id</span>
+    <span class="p">}]</span>
+  <span class="p">};</span>
+
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">sendNotification</span><span class="p">({</span>
+    <span class="na">players</span><span class="p">:</span> <span class="p">[</span><span class="nx">playerId</span><span class="p">],</span>
+    <span class="na">notification</span><span class="p">:</span> <span class="nx">notification</span><span class="p">,</span>
+    <span class="na">successCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully sent notification"</span><span class="p">);</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="na">response</span><span class="p">:</span> <span class="s2">"success"</span>
+      <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="na">failureCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error sending notification"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+        <span class="na">error</span><span class="p">:</span> <span class="nx">e</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">storeTimestampAtWhichLastMoveWasPlayed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">roomId</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sql</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+    <span class="na">host</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_ENDPOINT</span><span class="p">,</span>
+    <span class="na">user</span><span class="p">:</span> <span class="s1">'username'</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="s1">'password'</span><span class="p">,</span>
+    <span class="na">database</span><span class="p">:</span> <span class="s1">'db_name'</span>
+  <span class="p">});</span>
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">'INSERT INTO `moves` (`room_id`, `player_id`, `timestamp`) VALUES ('</span>
+    <span class="nx">roomId</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">playerId</span> <span class="o">+</span> <span class="s1">','</span> <span class="o">+</span> <span class="nx">timestamp</span> <span class="o">+</span> <span class="s1">') ON DUPLICATE KEY UPDATE '</span> <span class="o">+</span>
+    <span class="s1">'`room_id`=values(`room_id`),'</span> <span class="o">+</span>
+    <span class="s1">'`player_id`=values(`player_id`),'</span> <span class="o">+</span>
+    <span class="s1">'`timestamp`=values(`timestamp`);'</span><span class="p">);</span>
+
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="nx">db</span><span class="p">.</span><span class="nx">getTimestampAtWhichLastMoveWasPlayed</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">roomId</span><span class="p">,</span> <span class="nx">playerId</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">sql</span> <span class="o">=</span> <span class="nx">mysql</span><span class="p">.</span><span class="nx">createConnection</span><span class="p">({</span>
+    <span class="na">host</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">RDS_ENDPOINT</span><span class="p">,</span>
+    <span class="na">user</span><span class="p">:</span> <span class="s1">'username'</span><span class="p">,</span>
+    <span class="na">password</span><span class="p">:</span> <span class="s1">'password'</span><span class="p">,</span>
+    <span class="na">database</span><span class="p">:</span> <span class="s1">'db_name'</span>
+  <span class="p">});</span>
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">connect</span><span class="p">();</span>
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">'SELECT `timestamp` FROM `moves` WHERE `room_id`="'</span> <span class="o">+</span> <span class="nx">roomId</span> <span class="o">+</span> <span class="s1">'" AND `player_id`="'</span> <span class="o">+</span> <span class="nx">playerId</span> <span class="o">+</span> <span class="s1">'";'</span><span class="p">,</span>
+    <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">results</span><span class="p">,</span> <span class="nx">fields</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">results</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">timestamp</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">);</span>
+  <span class="nx">sql</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre>
+<p>On the server side:</p>
+
+<ol>
+<li>Validate and broadcast the move the client sent you.</li>
+<li>Store the timestamp at which the move was made by the player in the DB, in a table where a combination of <code>room_id</code> and <code>player_id</code> is the primary key.</li>
+<li>Set the next player ID to the opponent&#39;s ID.</li>
+<li>Schedule an RPC to be invoked after a specific period of time, for a function, which when invoked checks if the player has made a move between the time when the RPC was scheduled, and the time it was actually called.</li>
+<li>If he has not made a move within the duration, send a notification.</li>
+</ol>
+
+<p>Turn expiry works on the same principles, except that you call <code>kapow.game.end()</code> instead of sending out this notification.</p>
+<h1 id='leaderboards'>Leaderboards</h1><h2 id='step-1'>Step 1</h2>
+<p>Create a Board from the game details section of the <a href="https://dev.kapow.games">Developer Dashboard</a>.</p>
+
+<p><a href="https://f.kapowcdn.com/dafe7f11518779945304b2a7"><img src="https://f.kapowcdn.com/dafe7f11518779945304b2a7" height="300" width="200" ></a></p>
+
+<p>Parameters:</p>
+
+<ul>
+<li>Metric Name: Variable for which you&#39;ll be posting the scores for</li>
+<li>Display Name: Title of the metric which will be shown as the header on the scoreboards interface in-app</li>
+<li>Short Display Name: Title of the column in the scoreboard interface</li>
+<li>Intervals: Intervals for which you want the scoreboards to be re-computed</li>
+<li>Sorting Order: The order in which the posted metrics should be sorted</li>
+<li>Addable Metric: Whether Kapow should add up each posted score</li>
+</ul>
+<h2 id='step-2'>Step 2</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">validateAndPostScores</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">playerId</span> <span class="o">=</span> <span class="nx">score</span><span class="p">.</span><span class="nx">playerId</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">coins</span> <span class="o">=</span> <span class="nx">score</span><span class="p">.</span><span class="nx">coins</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">isValidScore</span><span class="p">(</span><span class="nx">score</span><span class="p">))</span> <span class="p">{</span> <span class="c1">// Perform sanity checks to ensure that the score is achievable</span>
+    <span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">postScores</span><span class="p">({</span>
+      <span class="na">playerId</span><span class="p">:</span> <span class="nx">playerId</span><span class="p">,</span>
+      <span class="na">scores</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'total_coins'</span><span class="p">:</span> <span class="nx">coins</span>
+      <span class="p">},</span>
+      <span class="na">successCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Successfully posted scores"</span><span class="p">);</span>
+        <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+          <span class="na">response</span><span class="p">:</span> <span class="s1">'success'</span>
+        <span class="p">});</span>
+      <span class="p">},</span>
+      <span class="na">failureCb</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">"Error posting scores"</span><span class="p">,</span> <span class="nx">e</span><span class="p">);</span>
+        <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+          <span class="na">error</span><span class="p">:</span> <span class="nx">e</span>
+        <span class="p">});</span>
+      <span class="p">}</span>
+    <span class="p">});</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">kapow</span><span class="p">.</span><span class="k">return</span><span class="p">({</span>
+      <span class="na">error</span><span class="p">:</span> <span class="s2">"invalid_score"</span>
+    <span class="p">});</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+<p>Add a function to validate and post the scores in your <code>server.js</code>.</p>
+<h2 id='step-3'>Step 3</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">onLevelEnd</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">coins</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">getUser</span><span class="p">({</span>
+    <span class="na">onSuccess</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">user</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">kapow</span><span class="p">.</span><span class="nx">rpc</span><span class="p">.</span><span class="nx">invoke</span><span class="p">({</span>
+        <span class="na">functionName</span><span class="p">:</span> <span class="s1">'validateAndPostScores'</span><span class="p">,</span>
+        <span class="na">parameters</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s1">'coins'</span><span class="p">:</span> <span class="nx">coins</span><span class="p">,</span>
+          <span class="s1">'playerId'</span><span class="p">:</span> <span class="nx">user</span><span class="p">.</span><span class="nx">player</span><span class="p">.</span><span class="nx">id</span>
+        <span class="p">},</span>
+        <span class="na">invokeLazily</span><span class="p">:</span> <span class="kc">true</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<p>Each time a player finishes a level, send the score to your server to be posted.</p>
+<h2 id='step-4'>Step 4</h2><pre class="highlight javascript tab-javascript"><code><span class="nx">game</span><span class="p">.</span><span class="nx">showScoreboard</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">kapow</span><span class="p">.</span><span class="nx">boards</span><span class="p">.</span><span class="nx">displayScoreboard</span><span class="p">({</span>
+    <span class="na">metric</span><span class="p">:</span> <span class="s1">'total_coins'</span><span class="p">,</span>
+    <span class="na">interval</span><span class="p">:</span> <span class="s1">'alltime'</span><span class="p">,</span>
+    <span class="na">onDismiss</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"Scoreboard dismissed"</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+<p>Finally, to display the following interface within the game call the <code>displayScoreboards</code> API.</p>
+
+<p><a href="https://f.kapowcdn.com/dafe7f1150849460878b5dcb"><img src="https://f.kapowcdn.com/dafe7f1150849460878b5dcb" height="350" width="200" ></a></p>
+
+        </div>
+        <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="javascript">code</a>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>

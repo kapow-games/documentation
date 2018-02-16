@@ -198,7 +198,7 @@
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+      <script src="javascripts/all_nosearch.js"></script>
   </head>
 
   <body class="dashboard" data-languages="[]">
@@ -210,10 +210,6 @@
     </a>
     <div class="toc-wrapper">
       <img src="images/logo.svg" class="logo" alt="Logo" />
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
       
         <ul class="toc-footer">
             <li><a href='./index.html'>Introduction</a></li>
@@ -226,7 +222,30 @@
             <a href="#developer-dashboard" class="toc-h1 toc-link" data-title="Developer Dashboard">Developer Dashboard</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                    <a href="#beta" class="toc-h2 toc-link" data-title="Beta">Beta</a>
+                  </li>
+                  <li>
+                    <a href="#review" class="toc-h2 toc-link" data-title="Review">Review</a>
+                  </li>
+                  <li>
+                    <a href="#released" class="toc-h2 toc-link" data-title="Released">Released</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#configuration" class="toc-h1 toc-link" data-title="Configuration">Configuration</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#game-url-game-zip" class="toc-h2 toc-link" data-title="Game URL/Game ZIP">Game URL/Game ZIP</a>
+                  </li>
+                  <li>
+                    <a href="#server-js" class="toc-h2 toc-link" data-title="server.js">server.js</a>
+                  </li>
+                  <li>
+                    <a href="#number-of-players" class="toc-h2 toc-link" data-title="Number of Players">Number of Players</a>
+                  </li>
+                  <li>
+                    <a href="#auto-room-locking" class="toc-h2 toc-link" data-title="Auto Room Locking">Auto Room Locking</a>
                   </li>
                   <li>
                     <a href="#distribution" class="toc-h2 toc-link" data-title="Distribution">Distribution</a>
@@ -237,9 +256,6 @@
                   <li>
                     <a href="#server-logs" class="toc-h2 toc-link" data-title="Server Logs">Server Logs</a>
                   </li>
-                  <li>
-                    <a href="#client-logs" class="toc-h2 toc-link" data-title="Client Logs">Client Logs</a>
-                  </li>
               </ul>
           </li>
       </div>
@@ -249,15 +265,22 @@
           <h1 id='developer-dashboard'>Developer Dashboard</h1>
 <p>You can sign up on the <a href="https://dev.kapow.games">Kapow Developer Dashboard</a> with your official email address (ideally one that is accessible to your engineering and product leads). </p>
 
-<p>On the developer dashboard, you have the option of either uploading the game as a zip file, or providing the URL from where the game will be fetched each time.</p>
-
-<p>During development, your developers can specify a URL where they have hosted your game. This can be set to the IP address of the developer&#39;s machine, and your developers can start a local web server to serve the code that they are currently working on. Then, each time they start the game inside the mobile app, it will display the latest code that is served by the web server on the developer&#39;s machine.</p>
-
-<p>Games that are leveraging Kapow&#39;s <a href="https://github.com/kapow-games/docs/wiki/Server-API-Reference">server side APIs</a> will also need to provide a publicly accessible link to their <code>server.js</code> file that contains code that can be invoked remotely. Kapow does not poll this file for updates, so you will have to manually click on &#39;Save Changes&#39; each time there&#39;s an update you&#39;d like to reflect on the server side.</p>
-<h2 id='configuration'>Configuration</h2><h3 id='game-url'>Game URL</h3>
-<p>URL to the location where the game is hosted. Eg: <code>https://example.com/game/index.html</code>.</p>
-<h3 id='server-url'>Server URL</h3>
-<p>URL to the location of your server side JavaScript file. Eg: <code>https://example.com/game/server/server.js</code>.</p>
+<p>A Kapow game undergoes three stages:</p>
+<h3 id='beta'>Beta</h3>
+<p>During development, developers can specify a URL where the game is hosted. This can be the IP address of any machine where a web server is running. Each time the game is loaded within the Kapow app, it will display the latest state of the code that is served by the web server.
+A beta game is visible only to those users who you&#39;ve whitelisted as beta-testers within the <a href="#distribution">distribution</a> section.</p>
+<h3 id='review'>Review</h3>
+<p>Once you want the Kapow Team to review your game, you can submit a build for review by uploading a zip-file that contains the client-side code for the game. The game then becomes visible to the entire Kapow team. To submit update review builds, you can make the changes in your <code>Beta</code> game and submit another build for Review.</p>
+<h3 id='released'>Released</h3>
+<p>Once the Kapow Team has cleared the build for release, they&#39;ll push the review build to a <code>release</code> state, post which every Kapow user will be able to access your game.
+As a result of this, the review game will disappear from your list of games on the dashboard.</p>
+<h1 id='configuration'>Configuration</h1><h3 id='game-url-game-zip'>Game URL/Game ZIP</h3>
+<p>URL to the location where the game is hosted. Eg: <code>https://example.com/game/index.html</code> or the zip file that contains the client-side code for the game. The zip file should be structure such that on un-zipping, a new folder is created that contains the entire code for the game.
+<aside class="notice">
+Please make sure that the server-side code is not a part of this zip file.
+</aside></p>
+<h3 id='server-js'>server.js</h3>
+<p>The file that contains your server side code.</p>
 <h3 id='number-of-players'>Number of Players</h3>
 <p>When a player chooses to play against random opponents, Kapow will lock the room if auto-room-locking is enabled once these many players have joined the room. The game does have the option to unlock the room post this.</p>
 <h3 id='auto-room-locking'>Auto Room Locking</h3>
@@ -269,11 +292,9 @@
 Please note that only email addresses of users who have registered on the Kapow app can be used entered here.
 </aside>
 <h2 id='boards'>Boards</h2>
-<p>If your game contains scoreboards, you can configure them here. For more information, check out the FAQ page.</p>
+<p>If your game contains scoreboards, you can configure them here. For more information, check out the <a href="faq.html">FAQ section</a>.</p>
 <h2 id='server-logs'>Server Logs</h2>
 <p>Logs emitted by your server script will be displayed here.</p>
-<h2 id='client-logs'>Client Logs</h2>
-<p>Logs emitted by your client script will be displayed here.</p>
 
         </div>
     </div>
