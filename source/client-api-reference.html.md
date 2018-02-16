@@ -9,6 +9,7 @@ toc_footers:
   - <a href='./dashboard.html'>Developer Dashboard</a>
   - <a href='./client-api-reference.html'>Client API Reference</a>
   - <a href='./server-api-reference.html'>Server API Reference</a>
+  - <a href='./faq.html'>FAQ</a>
 
 includes:
   - client-api
